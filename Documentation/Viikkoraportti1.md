@@ -1,3 +1,3 @@
 **Eka viikkoraportti:**
 
-Päätin aiheen ja loin repositorion. Seuraavaksi hmm jotain lalala :p
+Päätin aiheen ja loin repositorion. Tutustuin matriiseihin.
