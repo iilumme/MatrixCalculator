@@ -90,10 +90,9 @@ public class Calculator {
 
     public Matrix MatrixMultiply(Matrix a, Matrix b) {
 
-        Matrix multiplied = new Matrix(b.getRows(), a.getColumns());
+        Matrix multiplied = new Matrix(a.getRows(), b.getColumns());
 
-        int[][] numbers = new int[b.getRows()][a.getColumns()];
-        
+        int[][] numbers = new int[a.getRows()][b.getColumns()];
 
         int aRow = 0;
         int aColumn = 0;
@@ -101,23 +100,25 @@ public class Calculator {
         int bRow = 0;
         int bColumn = 0;
 
-        while (aRow != a.getRows() - 1 && aColumn != a.getColumns() - 1) {
+        while (aRow < a.getRows() && aColumn < a.getColumns()) {
 
-            numbers[aRow][bColumn] = a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
+            numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
 
-            if (bColumn == b.getColumns() - 1) {
+            if (bColumn == b.getColumns() - 1 && aColumn == a.getColumns() - 1) {
+                aRow++;
+                aColumn = 0;
+
+                if (bRow == b.getRows() - 1 && bColumn == b.getColumns() - 1) {
+                    bRow = 0;
+                } else {
+                    bRow++;
+                }
+                bColumn = -1;
+
+            } else if (bColumn == b.getColumns() - 1) {
                 aColumn++;
                 bRow++;
-                bColumn = 0;
-            }
-            if (aColumn == a.getColumns() - 1) {
-                aRow++;
-                aColumn = -1;
-            }
-
-            if (bRow == b.getRows() - 1 && bColumn == b.getColumns() - 1) {
-                bRow = 0;
-                bColumn = 0;
+                bColumn = -1;
             }
 
             bColumn++;
