@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="matrixcalculator.logic.CalculatorTest" time="0.012" errors="0" skipped="0">
+<testsuite tests="11" failures="0" name="matrixcalculator.logic.CalculatorTest" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/jre/lib"/>
@@ -66,10 +66,15 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="matrixcalculator.logic.CalculatorTest" name="plusOperationWorks" time="0.01"/>
-  <testcase classname="matrixcalculator.logic.CalculatorTest" name="plusOperationDoesNotWorkWhenDifferentMatrixs" time="0"/>
-  <testcase classname="matrixcalculator.logic.CalculatorTest" name="minusOperationWorks" time="0"/>
-  <testcase classname="matrixcalculator.logic.CalculatorTest" name="minusOperationDoesNotWorkWhenDifferentMatrixs" time="0"/>
-  <testcase classname="matrixcalculator.logic.CalculatorTest" name="scalarMultiplyingWorks" time="0.001"/>
-  <testcase classname="matrixcalculator.logic.CalculatorTest" name="transposeWorks" time="0.001"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="minusOperationDoesNotWorkWhenDifferentKindOfMatrices" time="0.012"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="transposeWorks" time="0"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="multiplyingWorks2x2And2x3" time="0"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="multiplyingDoesNotWorkWhenDifferentKindOfMatrices" time="0.001"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="multiplyingWorks2x3And3x3" time="0"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="plusOperationWorks" time="0.001"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="plusOperationWorksDoubleCheck" time="0"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="plusOperationDoesNotWorkWhenDifferentKindOfMatrices" time="0"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="minusOperationWorks" time="0.001"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="minusOperationWorksDoubleCheck" time="0"/>
+  <testcase classname="matrixcalculator.logic.CalculatorTest" name="scalarMultiplyingWorks" time="0"/>
 </testsuite>

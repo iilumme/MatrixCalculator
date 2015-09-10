@@ -7,7 +7,7 @@ public class Matrix {
     
     private int rows;
     private int columns;
-    private int[][] numbers;
+    private double[][] numbers;
 
     public Matrix(int rows, int columns) {
         this.rows = rows;
@@ -31,11 +31,11 @@ public class Matrix {
         this.columns = columns;
     }
 
-    public int[][] getNumbers() {
+    public double[][] getNumbers() {
         return numbers;
     }
 
-    public void setNumbers(int[][] numbers) {
+    public void setNumbers(double[][] numbers) {
         this.numbers = numbers;
     }
     

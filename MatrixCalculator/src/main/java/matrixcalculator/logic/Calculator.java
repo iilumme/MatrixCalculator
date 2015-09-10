@@ -3,12 +3,14 @@ package matrixcalculator.logic;
 import matrixcalculator.matrix.Matrix;
 
 /**
- * Calculator calculates different operations. At the moment, the maximum number of matrices is 2.
+ * Calculator calculates different operations. At the moment, the maximum number
+ * of matrices is 2.
  */
 public class Calculator {
 
     /**
      * Adds two matrices.
+     *
      * @param a the first matrix
      * @param b the second matrix
      * @return the result matrix of the operation
@@ -21,7 +23,7 @@ public class Calculator {
 
             Matrix sum = new Matrix(a.getRows(), a.getColumns());
 
-            int[][] numbers = new int[a.getRows()][a.getColumns()];
+            double[][] numbers = new double[a.getRows()][a.getColumns()];
 
             int row = 0;
 
@@ -48,6 +50,7 @@ public class Calculator {
 
     /**
      * Minus operation of two matrices.
+     *
      * @param a the first matrix
      * @param b the second matrix
      * @return the result matrix of the operation
@@ -60,7 +63,7 @@ public class Calculator {
 
             Matrix difference = new Matrix(a.getRows(), a.getColumns());
 
-            int[][] numbers = new int[a.getRows()][a.getColumns()];
+            double[][] numbers = new double[a.getRows()][a.getColumns()];
 
             int row = 0;
 
@@ -87,6 +90,7 @@ public class Calculator {
 
     /**
      * Scalar multiplication of matrix.
+     *
      * @param a the matrix
      * @param multiplier
      * @return the result matrix of the operation
@@ -95,7 +99,7 @@ public class Calculator {
 
         Matrix multiplied = new Matrix(a.getRows(), a.getColumns());
 
-        int[][] numbers = new int[a.getRows()][a.getColumns()];
+        double[][] numbers = new double[a.getRows()][a.getColumns()];
 
         int row = 0;
 
@@ -121,54 +125,61 @@ public class Calculator {
 
     /**
      * Multiplication of two matrices.
+     *
      * @param a the multiplier matrix
      * @param b the multiplicand matrix
      * @return the result matrix of the operation
      */
     public Matrix MatrixMultiply(Matrix a, Matrix b) {
 
-        Matrix multiplied = new Matrix(a.getRows(), b.getColumns());
+        if (a.getColumns() != b.getRows()) {
+            return null;
+        } else {
 
-        int[][] numbers = new int[a.getRows()][b.getColumns()];
+            Matrix multiplied = new Matrix(a.getRows(), b.getColumns());
 
-        int aRow = 0;
-        int aColumn = 0;
+            double[][] numbers = new double[a.getRows()][b.getColumns()];
 
-        int bRow = 0;
-        int bColumn = 0;
+            int aRow = 0;
+            int aColumn = 0;
 
-        while (aRow < a.getRows() && aColumn < a.getColumns()) {
+            int bRow = 0;
+            int bColumn = 0;
 
-            numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
+            while (aRow < a.getRows() && aColumn < a.getColumns()) {
 
-            if (bColumn == b.getColumns() - 1 && aColumn == a.getColumns() - 1) {
-                aRow++;
-                aColumn = 0;
+                numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
 
-                if (bRow == b.getRows() - 1 && bColumn == b.getColumns() - 1) {
-                    bRow = 0;
-                } else {
+                if (bColumn == b.getColumns() - 1 && aColumn == a.getColumns() - 1) {
+                    aRow++;
+                    aColumn = 0;
+
+                    if (bRow == b.getRows() - 1 && bColumn == b.getColumns() - 1) {
+                        bRow = 0;
+                    } else {
+                        bRow++;
+                    }
+                    bColumn = -1;
+
+                } else if (bColumn == b.getColumns() - 1) {
+                    aColumn++;
                     bRow++;
+                    bColumn = -1;
                 }
-                bColumn = -1;
 
-            } else if (bColumn == b.getColumns() - 1) {
-                aColumn++;
-                bRow++;
-                bColumn = -1;
+                bColumn++;
+
             }
 
-            bColumn++;
+            multiplied.setNumbers(numbers);
 
+            return multiplied;
         }
-
-        multiplied.setNumbers(numbers);
-
-        return multiplied;
     }
 
     /**
      * Transpose matrix.
+     *
      * @param a the matrix
      * @return the result matrix of the operation
      */
@@ -176,7 +187,7 @@ public class Calculator {
 
         Matrix transpose = new Matrix(a.getColumns(), a.getRows());
 
-        int[][] numbers = new int[a.getColumns()][a.getRows()];
+        double[][] numbers = new double[a.getColumns()][a.getRows()];
 
         int row = 0;
 
