@@ -33,33 +33,33 @@ public class Interface implements Runnable {
     private void createComponents(Container c) {
         c.setLayout(new GridLayout(2, 4));
         c.setBackground(Color.white);
-        
-        JPanel first = new JPanel(new GridLayout(1, 3));
-        
-        JTextArea rows = new JTextArea();
-        JTextArea columns = new JTextArea();
-        JButton enter = new JButton();
-        
-        first.add(rows);
-        first.add(columns);
-        first.add(enter);
-        
-        JPanel second = new JPanel(new GridLayout(1, 3));
-        
-        JTextArea rows2 = new JTextArea();
-        JTextArea columns2 = new JTextArea();
-        JButton enter2 = new JButton();
-        
-        second.add(rows2);
-        second.add(columns2);
-        second.add(enter2);
-        
-        c.add(first);
-        c.add(second);
-        c.add(new JPanel());
-        c.add(new JPanel());
-        c.add(new JPanel());
-        c.add(new JPanel());
+//        
+//        JPanel first = new JPanel(new GridLayout(1, 3));
+//        
+//        JTextArea rows = new JTextArea();
+//        JTextArea columns = new JTextArea();
+//        JButton enter = new JButton();
+//        
+//        first.add(rows);
+//        first.add(columns);
+//        first.add(enter);
+//        
+//        JPanel second = new JPanel(new GridLayout(1, 3));
+//        
+//        JTextArea rows2 = new JTextArea();
+//        JTextArea columns2 = new JTextArea();
+//        JButton enter2 = new JButton();
+//        
+//        second.add(rows2);
+//        second.add(columns2);
+//        second.add(enter2);
+//        
+//        c.add(first);
+//        c.add(second);
+//        c.add(new JPanel());
+//        c.add(new JPanel());
+//        c.add(new JPanel());
+//        c.add(new JPanel());
         
     }
 

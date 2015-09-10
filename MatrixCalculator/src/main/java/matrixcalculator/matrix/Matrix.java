@@ -1,7 +1,7 @@
 package matrixcalculator.matrix;
 
 /**
- * 
+ * A class that models a matrix.
  */
 public class Matrix {
     
