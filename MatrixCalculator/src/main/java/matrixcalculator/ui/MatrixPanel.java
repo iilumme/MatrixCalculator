@@ -32,9 +32,4 @@ public class MatrixPanel extends JPanel {
     public void setMatrixField(MatrixField matrixField) {
         this.matrixField = matrixField;
     }
-
-//    public RowsAndColumnsPanel getRowsAndColumnsPanel() {
-//        return rowsAndColumnsPanel;
-//    }
-
 }

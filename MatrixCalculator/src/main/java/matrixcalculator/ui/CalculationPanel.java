@@ -8,7 +8,7 @@ import javax.swing.JTextField;
 import matrixcalculator.matrix.Matrix;
 
 /**
- * Panel in which are the matrices.
+ * Panel in which are the matrices and the settings.
  */
 public class CalculationPanel extends JPanel {
 
@@ -46,6 +46,13 @@ public class CalculationPanel extends JPanel {
         setOpaque(false);
     }
 
+    /**
+     * Creates a matrix from the matrixfield.
+     *
+     * @param position the first or the second matrix
+     * @return matrix
+     * @throws Exception
+     */
     public Matrix getMatrix(String position) throws Exception {
 
         MatrixField field;
@@ -96,13 +103,15 @@ public class CalculationPanel extends JPanel {
 
     public void setResult(MatrixLabel matrixLabel) {
         this.matrixLabel = matrixLabel;
-        add(this.matrixLabel, BorderLayout.SOUTH);
+        add(matrixLabel, BorderLayout.SOUTH);
         revalidate();
     }
 
     public void emptyResult() {
-        this.matrixLabel = null;
-        revalidate();
+        if (this.matrixLabel != null) {
+            remove(this.matrixLabel);
+            revalidate();
+        }
     }
 
     public void setMessage(String message) {

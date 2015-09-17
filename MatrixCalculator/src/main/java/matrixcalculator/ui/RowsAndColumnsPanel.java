@@ -8,51 +8,44 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Panel for setting the count of rows and columns.
+ */
 public class RowsAndColumnsPanel extends JPanel {
-    
+
     private final JPanel rowPanel;
-    private final JPanel columnPanel;
-    
     private final JLabel rowLabel;
-    private final JLabel columnLabel;
-    
     private final JTextField rows;
+    
+    private final JPanel columnPanel;
+    private final JLabel columnLabel;
     private final JTextField columns;
-    
+
     private final JButton enter;
-    
+
     public RowsAndColumnsPanel() {
         setLayout(new GridLayout(1, 3));
-        
-//        this.rowPanel = new JPanel(new GridLayout(1,2));
-//        this.columnPanel = new JPanel(new GridLayout(1,2));
-        
+
         this.rowPanel = new JPanel(new BorderLayout());
-        this.columnPanel = new JPanel(new BorderLayout());
-        
         this.rowLabel = new JLabel("rows");
-        this.columnLabel = new JLabel("columns");
-        
         this.rows = new JTextField(5);
-        this.columns = new JTextField(5);
-        
-        
         rowPanel.add(rowLabel, BorderLayout.WEST);
         rowPanel.add(rows, BorderLayout.EAST);
-        
         rowPanel.setBackground(Color.LIGHT_GRAY);
-        
+
+        this.columnPanel = new JPanel(new BorderLayout());
+        this.columnLabel = new JLabel("columns");
+        this.columns = new JTextField(5);
         columnPanel.add(columnLabel, BorderLayout.WEST);
         columnPanel.add(columns, BorderLayout.EAST);
-        
         columnPanel.setBackground(Color.LIGHT_GRAY);
-        
+
         this.enter = new JButton("ENTER");
-        
+
         add(rowPanel);
         add(columnPanel);
         add(enter);
-        
+
         setBackground(Color.LIGHT_GRAY);
     }
 
@@ -67,7 +60,5 @@ public class RowsAndColumnsPanel extends JPanel {
     public JButton getEnter() {
         return enter;
     }
-    
-    
-    
+
 }

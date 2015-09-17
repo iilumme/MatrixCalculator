@@ -1,6 +1,7 @@
 package matrixcalculator.ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -13,11 +14,13 @@ import matrixcalculator.matrix.Matrix;
 public class MatrixLabel extends JPanel {
 
     public MatrixLabel(Matrix matrix) {
+        
         setLayout(new GridLayout(matrix.getRows(), matrix.getColumns()));
         int row = 0;
         for (int column = 0; column < matrix.getColumns(); column++) {
 
             JLabel label = new JLabel("" + matrix.getNumbers()[row][column]);
+            label.setFont(new Font("Courier New", Font.BOLD, 18));
             label.setBorder(BorderFactory.createMatteBorder(1, 4, 1, 1, Color.ORANGE));
             add(label);
 

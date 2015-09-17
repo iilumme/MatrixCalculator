@@ -23,6 +23,10 @@ public class OperationButtonListener implements ActionListener {
         this.calculator = new Calculator();
     }
 
+    /**
+     * Calculates the wanted operations and gives the result.
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -92,13 +96,14 @@ public class OperationButtonListener implements ActionListener {
                     boolean inverse = calculator.isInverseMatrixOfX(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
                     calculationPanel.emptyMessage();
                     calculationPanel.emptyResult();
+                    calculationPanel.setMessage(inverse + "");
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
             }
             break;
             case "determinant":
-
+                calculationPanel.emptyResult();
                 break;
         }
     }
