@@ -1,13 +1,9 @@
 package matrixcalculator.ui;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 /**
@@ -30,37 +26,9 @@ public class Interface implements Runnable {
         this.frame.setVisible(true);
     }
 
-    private void createComponents(Container c) {
-        c.setLayout(new GridLayout(2, 4));
-        c.setBackground(Color.white);
-//        
-//        JPanel first = new JPanel(new GridLayout(1, 3));
-//        
-//        JTextArea rows = new JTextArea();
-//        JTextArea columns = new JTextArea();
-//        JButton enter = new JButton();
-//        
-//        first.add(rows);
-//        first.add(columns);
-//        first.add(enter);
-//        
-//        JPanel second = new JPanel(new GridLayout(1, 3));
-//        
-//        JTextArea rows2 = new JTextArea();
-//        JTextArea columns2 = new JTextArea();
-//        JButton enter2 = new JButton();
-//        
-//        second.add(rows2);
-//        second.add(columns2);
-//        second.add(enter2);
-//        
-//        c.add(first);
-//        c.add(second);
-//        c.add(new JPanel());
-//        c.add(new JPanel());
-//        c.add(new JPanel());
-//        c.add(new JPanel());
-        
+    private void createComponents(Container c) {       
+        c.setLayout(new GridLayout(1, 1));
+        c.add(new Background()); 
     }
 
 }

@@ -35,7 +35,8 @@
                 <configuration>
                     <instrumentation>
                         <excludes>
-                            <exclude>matrixcalculator/ui/**.class</exclude>               
+                            <exclude>matrixcalculator/ui/**/*.class</exclude>
+                            <exclude>matrixcalculator/Main.class</exclude>                
                         </excludes>
                     </instrumentation>
                 </configuration>

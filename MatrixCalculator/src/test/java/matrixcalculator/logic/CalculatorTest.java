@@ -1,10 +1,8 @@
 package matrixcalculator.logic;
 
+import matrixcalculator.matrix.IdentityMatrix;
 import matrixcalculator.matrix.Matrix;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import matrixcalculator.matrix.ZeroMatrix;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,22 +17,6 @@ public class CalculatorTest {
     public CalculatorTest() {
         this.calculator = new Calculator();
     }
-
-//    @BeforeClass
-//    public static void setUpClass() {
-//    }
-//
-//    @AfterClass
-//    public static void tearDownClass() {
-//    }
-//
-//    @Before
-//    public void setUp() {
-//    }
-//
-//    @After
-//    public void tearDown() {
-//    }
 
     @Test
     public void plusOperationWorks() {
@@ -64,7 +46,7 @@ public class CalculatorTest {
         assertEquals(5, c.getNumbers()[1][0], DELTA);
         assertEquals(6, c.getNumbers()[1][1], DELTA);
     }
-    
+
     @Test
     public void plusOperationWorksDoubleCheck() {
         Matrix a = new Matrix(2, 2);
@@ -103,6 +85,16 @@ public class CalculatorTest {
 
         assertNull(c);
     }
+    
+    @Test
+    public void plusOperationDoesNotWorkWhenDifferentKindOfMatricesSecondTest() {
+        Matrix a = new Matrix(3, 4);
+        Matrix b = new Matrix(2, 3);
+
+        Matrix c = calculator.Matrixplus(a, b);
+
+        assertNull(c);
+    }
 
     @Test
     public void minusOperationWorks() {
@@ -132,7 +124,7 @@ public class CalculatorTest {
         assertEquals(6, c.getNumbers()[1][0], DELTA);
         assertEquals(-4, c.getNumbers()[1][1], DELTA);
     }
-    
+
     @Test
     public void minusOperationWorksDoubleCheck() {
         Matrix a = new Matrix(2, 2);
@@ -166,6 +158,16 @@ public class CalculatorTest {
     public void minusOperationDoesNotWorkWhenDifferentKindOfMatrices() {
         Matrix a = new Matrix(3, 2);
         Matrix b = new Matrix(2, 2);
+
+        Matrix c = calculator.Matrixminus(a, b);
+
+        assertNull(c);
+    }
+    
+    @Test
+    public void minusOperationDoesNotWorkWhenDifferentKindOfMatricesSecondTest() {
+        Matrix a = new Matrix(3, 7);
+        Matrix b = new Matrix(2, 5);
 
         Matrix c = calculator.Matrixminus(a, b);
 
@@ -219,11 +221,11 @@ public class CalculatorTest {
         assertEquals(1, c.getNumbers()[2][0], DELTA);
         assertEquals(1, c.getNumbers()[2][1], DELTA);
     }
-    
+
     @Test
     public void multiplyingWorks2x2And2x3() {
         Matrix a = new Matrix(2, 2);
-        Matrix b = new Matrix(2, 3);                
+        Matrix b = new Matrix(2, 3);
 
         double[][] anumbers = new double[2][2];
         anumbers[0][0] = -1;
@@ -252,8 +254,8 @@ public class CalculatorTest {
         assertEquals(-4, c.getNumbers()[1][1], DELTA);
         assertEquals(15, c.getNumbers()[1][2], DELTA);
     }
-    
-     @Test
+
+    @Test
     public void multiplyingDoesNotWorkWhenDifferentKindOfMatrices() {
         Matrix a = new Matrix(5, 2);
         Matrix b = new Matrix(10, 8);
@@ -262,12 +264,12 @@ public class CalculatorTest {
 
         assertNull(c);
     }
-    
+
     @Test
     public void multiplyingWorks2x3And3x3() {
         Matrix a = new Matrix(2, 3);
         Matrix b = new Matrix(3, 3);
-        
+
         double[][] anumbers = new double[2][3];
         anumbers[0][0] = 1;
         anumbers[0][1] = 1;
@@ -292,7 +294,7 @@ public class CalculatorTest {
         b.setNumbers(bnumbers);
 
         Matrix c = calculator.MatrixMultiply(a, b);
-        
+
         assertEquals(9, c.getNumbers()[0][0], DELTA);
         assertEquals(3, c.getNumbers()[0][1], DELTA);
         assertEquals(9, c.getNumbers()[0][2], DELTA);
@@ -301,6 +303,150 @@ public class CalculatorTest {
         assertEquals(19, c.getNumbers()[1][2], DELTA);
     }
 
+    @Test
+    public void isIdentityMatrixFalse() {
+        Matrix a = new Matrix(2, 2);
+
+        double[][] anumbers = new double[2][2];
+        anumbers[0][0] = 3.2;
+        anumbers[0][1] = 2;
+        anumbers[1][0] = 4.1;
+        anumbers[1][1] = 1;
+
+        a.setNumbers(anumbers);
+        assertFalse(calculator.isIdentityMatrix(a));
+    }
+
+    @Test
+    public void isIdentityMatrixFalseWithZeroMatrix() {
+        ZeroMatrix zeroMatrix = new ZeroMatrix(3, 3);
+        assertFalse(calculator.isIdentityMatrix(zeroMatrix));
+    }
+
+    @Test
+    public void isIdentityMatrixTrue() {
+        IdentityMatrix identityMatrix = new IdentityMatrix(3);
+        assertTrue(calculator.isIdentityMatrix(identityMatrix));
+    }
     
-    
+    @Test
+    public void isIdentityMatrixTrueTwo() {
+        Matrix a = new Matrix(3, 3);
+
+        double[][] anumbers = new double[3][3];
+        anumbers[0][0] = 1;
+        anumbers[0][1] = 0;
+        anumbers[0][2] = 0;
+        anumbers[1][0] = 0;
+        anumbers[1][1] = 1;
+        anumbers[1][2] = 0;
+        anumbers[2][0] = 0;
+        anumbers[2][1] = 0;
+        anumbers[2][2] = 1;
+
+        a.setNumbers(anumbers);
+
+        assertTrue(calculator.isIdentityMatrix(a));
+    }
+
+    @Test
+    public void isInverseMatrixofXFalse() {
+        Matrix a = new Matrix(2, 2);
+        Matrix b = new Matrix(2, 2);
+
+        double[][] anumbers = new double[2][2];
+        anumbers[0][0] = 3.2;
+        anumbers[0][1] = 2;
+        anumbers[1][0] = 4.1;
+        anumbers[1][1] = 1;
+
+        a.setNumbers(anumbers);
+
+        double[][] bnumbers = new double[2][2];
+        bnumbers[0][0] = 6;
+        bnumbers[0][1] = 4;
+        bnumbers[1][0] = 1;
+        bnumbers[1][1] = 5;
+
+        b.setNumbers(bnumbers);
+
+        assertFalse(calculator.isInverseMatrixOfX(a, b));
+
+    }
+
+    @Test
+    public void isInverseMatrixofXTrue() {
+
+        Matrix c = new Matrix(3, 3);
+        Matrix d = new Matrix(3, 3);
+
+        double[][] cnumbers = new double[3][3];
+        cnumbers[0][0] = 1;
+        cnumbers[0][1] = -1;
+        cnumbers[0][2] = 0;
+        cnumbers[1][0] = 0;
+        cnumbers[1][1] = 2;
+        cnumbers[1][2] = 1;
+        cnumbers[2][0] = 1;
+        cnumbers[2][1] = 0;
+        cnumbers[2][2] = 0;
+
+        c.setNumbers(cnumbers);
+
+        double[][] dnumbers = new double[3][3];
+        dnumbers[0][0] = 0;
+        dnumbers[0][1] = 0;
+        dnumbers[0][2] = 1;
+        dnumbers[1][0] = -1;
+        dnumbers[1][1] = 0;
+        dnumbers[1][2] = 1;
+        dnumbers[2][0] = 2;
+        dnumbers[2][1] = 1;
+        dnumbers[2][2] = -2;
+
+        d.setNumbers(dnumbers);
+
+        assertTrue(calculator.isInverseMatrixOfX(c, d));
+    }
+
+    @Test
+    public void isZeroMatrixFalse() {
+        Matrix a = new Matrix(2, 2);
+
+        double[][] anumbers = new double[2][2];
+        anumbers[0][0] = 3.2;
+        anumbers[0][1] = 2;
+        anumbers[1][0] = 4.1;
+        anumbers[1][1] = 1;
+
+        a.setNumbers(anumbers);
+        assertFalse(calculator.isZeroMatrix(a));
+    }
+
+    @Test
+    public void isZeroMatrixFalseWithIdentityMatrix() {
+        IdentityMatrix identityMatrix = new IdentityMatrix(3);
+        assertFalse(calculator.isZeroMatrix(identityMatrix));
+    }
+
+    @Test
+    public void isZeroMatrixTrue() {
+        ZeroMatrix zeroMatrix = new ZeroMatrix(3, 2);
+        assertTrue(calculator.isZeroMatrix(zeroMatrix));
+    }
+
+    @Test
+    public void isZeroMatrixTrueTwo() {
+        Matrix a = new Matrix(2, 2);
+
+        double[][] anumbers = new double[2][2];
+        anumbers[0][0] = 0;
+        anumbers[0][1] = 0;
+        anumbers[1][0] = 0;
+        anumbers[1][1] = 0;
+
+        a.setNumbers(anumbers);
+
+        assertTrue(calculator.isZeroMatrix(a));
+    }
 }

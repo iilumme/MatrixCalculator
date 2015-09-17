@@ -1,10 +1,10 @@
 package matrixcalculator.logic;
 
-import matrixcalculator.matrix.Matrix;
+import matrixcalculator.matrix.*;
 
 /**
  * Calculator calculates different operations. At the moment, the maximum number
- * of matrices is 2.
+ * of matrices in a operation is 2.
  */
 public class Calculator {
 
@@ -209,6 +209,87 @@ public class Calculator {
         transpose.setNumbers(numbers);
 
         return transpose;
+    }
+
+    /**
+     * Tells if the given matrix is a zero matrix or not.
+     *
+     * @param a the matrix
+     * @return true or false
+     */
+    public boolean isZeroMatrix(Matrix a) {
+
+        if (a instanceof ZeroMatrix) {
+            return true;
+        }
+
+        int row = 0;
+
+        for (int column = 0; column < a.getColumns(); column++) {
+
+            if (a.getNumbers()[row][column] != 0) {
+                return false;
+            }
+
+            if (column == a.getColumns() - 1) {
+                row++;
+                column = -1;
+
+                if (row == a.getColumns()) {
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Tells if the given matrix is a identity matrix or not.
+     * @param a the matrix
+     * @return true or false
+     */
+    public boolean isIdentityMatrix(Matrix a) {
+
+        if (a instanceof IdentityMatrix) {
+            return true;
+        }
+
+        int row = 0;
+
+        for (int column = 0; column < a.getColumns(); column++) {
+
+            if (column == row && a.getNumbers()[row][column] != 1) {
+                return false;
+            } else if (column != row && a.getNumbers()[row][column] != 0) {
+                return false;
+            }
+
+            if (column == a.getColumns() - 1) {
+                row++;
+                column = -1;
+
+                if (row == a.getColumns()) {
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Tells if the second matrix (b) is the inverse matrix of the fist matrix (a).
+     * @param a the first matrix, possible invertible matrix
+     * @param b the second matrix, possible inverse matrix of the first matrix
+     * @return true or false
+     */
+    public boolean isInverseMatrixOfX(Matrix a, Matrix b) {
+        Matrix ab = MatrixMultiply(a, b);
+        Matrix ba = MatrixMultiply(b, a);
+
+        if (isIdentityMatrix(ab) && isIdentityMatrix(ba)) {
+            return true;
+        }
+        return false;
     }
 
 }

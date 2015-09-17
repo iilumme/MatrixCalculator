@@ -7,7 +7,7 @@ public class Matrix {
     
     private int rows;
     private int columns;
-    private double[][] numbers;
+    protected double[][] numbers;
 
     public Matrix(int rows, int columns) {
         this.rows = rows;
