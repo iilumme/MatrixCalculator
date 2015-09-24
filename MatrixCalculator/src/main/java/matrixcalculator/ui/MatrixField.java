@@ -29,9 +29,9 @@ public class MatrixField extends JPanel {
     }
 
     public void createFields() {
-        
+
         setLayout(new GridLayout(this.rows, this.columns));
-        
+
         int row = 0;
 
         for (int column = 0; column < columns; column++) {
@@ -69,7 +69,7 @@ public class MatrixField extends JPanel {
         }
     }
 
-    public void updateFields() {  
+    public void updateFields() {
         removeAll();
         this.fields = new JTextField[this.rows][this.columns];
     }
@@ -92,6 +92,69 @@ public class MatrixField extends JPanel {
 
     public JTextField[][] getFields() {
         return fields;
+    }
+
+    public void setNumbers(int matrix) {
+        if (matrix == 0) {
+            int row = 0;
+
+            for (int column = 0; column < this.columns; column++) {
+
+                this.fields[row][column].setText("0");
+
+                if (column == this.columns - 1) {
+                    row++;
+                    column = -1;
+
+                    if (row == this.columns) {
+                        break;
+                    }
+                }
+
+            }
+        } else if (matrix == 1) {
+
+            int row = 0;
+
+            for (int column = 0; column < this.columns; column++) {
+
+                if (column == row) {
+                    this.fields[row][column].setText("1");
+                } else {
+                    this.fields[row][column].setText("0");
+                }
+
+                if (column == this.columns - 1) {
+                    row++;
+                    column = -1;
+
+                    if (row == this.columns) {
+                        break;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+    public void empty() {
+        int row = 0;
+        for (int column = 0; column < this.columns; column++) {
+
+            this.fields[row][column].setText("");
+
+            if (column == this.columns - 1) {
+                row++;
+                column = -1;
+
+                if (row == this.columns) {
+                    break;
+                }
+            }
+
+        }
     }
 
 }

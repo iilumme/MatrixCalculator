@@ -1,5 +1,6 @@
 package matrixcalculator.ui;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -17,7 +18,7 @@ public class Interface implements Runnable {
     public void run() {
         this.frame = new JFrame("MatrixCalculator");
         this.frame.setPreferredSize(new Dimension(1000, 600));
-        this.frame.setResizable(false);
+        this.frame.setBackground(Color.white);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         
         createComponents(this.frame.getContentPane());

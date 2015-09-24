@@ -2,6 +2,7 @@ package matrixcalculator.ui;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -21,6 +22,9 @@ public class CalculationPanel extends JPanel {
 
     private MatrixLabel matrixLabel;
     private final JLabel message;
+    
+    private final JButton right;
+    private final JButton left;
 
     public CalculationPanel() {
 
@@ -37,11 +41,19 @@ public class CalculationPanel extends JPanel {
 
         this.matrixLabel = null;
         this.message = new JLabel();
+        
+        this.right = new JButton("Set new matrix to the Right");
+        this.left = new JButton("Set new matrix to the Left");
 
-        add(multiplierPanel, BorderLayout.LINE_START);
+        
+        add(multiplierPanel, BorderLayout.LINE_START);     
         add(first, BorderLayout.WEST);
         add(second, BorderLayout.EAST);
-        add(message, BorderLayout.PAGE_END);
+        add(message, BorderLayout.LINE_END);
+        add(left, BorderLayout.PAGE_END);
+        add(right, BorderLayout.PAGE_END);
+        
+        
 
         setOpaque(false);
     }
@@ -97,14 +109,13 @@ public class CalculationPanel extends JPanel {
         if (multiplier.getText().matches("[-+]?[0-9]*\\.?[0-9]*")) {
             return Double.parseDouble(multiplier.getText());
         }
-
         multiplier.setText("1");
         return 1;
     }
 
     public void setResult(MatrixLabel matrixLabel) {
         this.matrixLabel = matrixLabel;
-        add(matrixLabel, BorderLayout.SOUTH);
+        add(matrixLabel, BorderLayout.LINE_END);
         revalidate();
     }
 

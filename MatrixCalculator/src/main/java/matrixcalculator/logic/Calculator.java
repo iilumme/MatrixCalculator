@@ -148,20 +148,19 @@ public class Calculator {
             int bRow = 0;
             int bColumn = 0;
 
-            while (aRow < a.getRows() && aColumn < a.getColumns()) {                
-                
+            while (aRow < a.getRows() && aColumn < a.getColumns()) {
+
                 int decimals;
-                
+
                 if (numbers[aRow][bColumn] == 0) {
                     decimals = getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]);
                 } else {
                     decimals = Math.max(getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]), getDecimals(numbers[aRow][bColumn]));
                 }
-                    
-                numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];              
+
+                numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
                 numbers[aRow][bColumn] = round(numbers[aRow][bColumn], decimals);
-                
-                
+
                 if (bColumn == b.getColumns() - 1 && aColumn == a.getColumns() - 1) {
                     aRow++;
                     aColumn = 0;
@@ -308,7 +307,8 @@ public class Calculator {
     }
 
     /**
-     * Rounds the given double 
+     * Rounds the given double
+     *
      * @param d the double
      * @param decimals the wanted amount of decimal digits
      * @return rounded double
@@ -318,23 +318,25 @@ public class Calculator {
         bigDecimal = bigDecimal.setScale(decimals, RoundingMode.HALF_EVEN);
         return bigDecimal.doubleValue();
     }
-    
+
     /**
      * Returns the number of decimals
+     *
      * @param first the given double
      * @return the number of decimals
      */
     private int getDecimals(double first) {
         String f = Double.toString(first);
-        
+
         int pointF = f.indexOf('.');
         int decimalsF = f.length() - pointF - 1;
-        
+
         return decimalsF;
     }
 
     /**
      * Returns the bigger number of decimals
+     *
      * @param first the first double
      * @param second the second double
      * @return the bigger number of decimals
@@ -342,18 +344,19 @@ public class Calculator {
     private int getDecimals(double first, double second) {
         String f = Double.toString(first);
         String s = Double.toString(second);
-        
+
         int pointF = f.indexOf('.');
         int pointS = s.indexOf('.');
-        
+
         int decimalsF = f.length() - pointF - 1;
         int decimalsS = s.length() - pointS - 1;
-        
+
         return Math.max(decimalsF, decimalsS);
     }
-    
+
     /**
      * Returns the sum of decimals
+     *
      * @param first the first double
      * @param second the second double
      * @return the sum of decimals
@@ -361,13 +364,13 @@ public class Calculator {
     private int getDecimalsForMultiplying(double first, double second) {
         String f = Double.toString(first);
         String s = Double.toString(second);
-        
+
         int pointF = f.indexOf('.');
         int pointS = s.indexOf('.');
-        
+
         int decimalsF = f.length() - pointF - 1;
         int decimalsS = s.length() - pointS - 1;
-        
+
         return decimalsF + decimalsS;
     }
 
