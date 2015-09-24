@@ -27,7 +27,7 @@ public class RowsAndColumnsPanel extends JPanel {
         setLayout(new GridLayout(1, 3));
 
         this.rowPanel = new JPanel(new BorderLayout());
-        this.rowLabel = new JLabel("rows");
+        this.rowLabel = new JLabel(" rows");
         this.rows = new JTextField(5);
         rowPanel.add(rowLabel, BorderLayout.WEST);
         rowPanel.add(rows, BorderLayout.EAST);

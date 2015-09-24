@@ -95,7 +95,7 @@ public class Calculator {
      * @param multiplier
      * @return the result matrix of the operation
      */
-    public Matrix MatrixScalarMultiply(Matrix a, int multiplier) {
+    public Matrix MatrixScalarMultiply(Matrix a, double multiplier) {
 
         Matrix multiplied = new Matrix(a.getRows(), a.getColumns());
 

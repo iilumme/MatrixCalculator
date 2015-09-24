@@ -71,11 +71,12 @@ public class CalculationPanel extends JPanel {
 
         for (int column = 0; column < field.getColumns(); column++) {
 
-            if (!field.getFields()[row][column].getText().matches("[0-9]+")) {
+            if (!field.getFields()[row][column].getText().matches("[-+]?[0-9]*\\.?[0-9]*")) {
                 throw new Exception("Something wrong with cells");
             }
 
-            numbers[row][column] = Integer.parseInt(field.getFields()[row][column].getText());
+            numbers[row][column] = Double.parseDouble(field.getFields()[row][column].getText());
+            
 
             if (column == field.getColumns() - 1) {
                 row++;
@@ -92,9 +93,9 @@ public class CalculationPanel extends JPanel {
         return a;
     }
 
-    public int getMultiplier() {
-        if (multiplier.getText().matches("[0-9]+")) {
-            return Integer.parseInt(multiplier.getText());
+    public double getMultiplier() {
+        if (multiplier.getText().matches("[-+]?[0-9]*\\.?[0-9]*")) {
+            return Double.parseDouble(multiplier.getText());
         }
 
         multiplier.setText("1");

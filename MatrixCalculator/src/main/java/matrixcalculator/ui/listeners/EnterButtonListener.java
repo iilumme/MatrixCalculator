@@ -27,7 +27,7 @@ public class EnterButtonListener implements ActionListener {
         int rows = 1;
         int columns = 1;
 
-        if (this.rowsAndColumnsPanel.getRows().getText().matches("[0-9]+") && this.rowsAndColumnsPanel.getColumns().getText().matches("[0-9]+")) {
+        if (this.rowsAndColumnsPanel.getRows().getText().matches("[+]?[0-9]+") && this.rowsAndColumnsPanel.getColumns().getText().matches("[+]?[0-9]+")) {
             rows = Integer.parseInt(this.rowsAndColumnsPanel.getRows().getText());
             columns = Integer.parseInt(this.rowsAndColumnsPanel.getColumns().getText());
             this.calculationPanel.emptyMessage();
