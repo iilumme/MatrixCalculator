@@ -1,5 +1,7 @@
 package matrixcalculator.logic;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import matrixcalculator.matrix.*;
 
 /**
@@ -29,7 +31,7 @@ public class Calculator {
 
             for (int column = 0; column < a.getColumns(); column++) {
 
-                numbers[row][column] = a.getNumbers()[row][column] + b.getNumbers()[row][column];
+                numbers[row][column] = round(a.getNumbers()[row][column] + b.getNumbers()[row][column], getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
 
                 if (column == a.getColumns() - 1) {
                     row++;
@@ -69,7 +71,7 @@ public class Calculator {
 
             for (int column = 0; column < a.getColumns(); column++) {
 
-                numbers[row][column] = a.getNumbers()[row][column] - b.getNumbers()[row][column];
+                numbers[row][column] = round(a.getNumbers()[row][column] - b.getNumbers()[row][column], getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
 
                 if (column == a.getColumns() - 1) {
                     row++;
@@ -105,7 +107,7 @@ public class Calculator {
 
         for (int column = 0; column < a.getColumns(); column++) {
 
-            numbers[row][column] = a.getNumbers()[row][column] * multiplier;
+            numbers[row][column] = round(a.getNumbers()[row][column] * multiplier, getDecimalsForScalar(a.getNumbers()[row][column], multiplier));
 
             if (column == a.getColumns() - 1) {
                 row++;
@@ -245,6 +247,7 @@ public class Calculator {
 
     /**
      * Tells if the given matrix is a identity matrix or not.
+     *
      * @param a the matrix
      * @return true or false
      */
@@ -277,7 +280,9 @@ public class Calculator {
     }
 
     /**
-     * Tells if the second matrix (b) is the inverse matrix of the fist matrix (a).
+     * Tells if the second matrix (b) is the inverse matrix of the fist matrix
+     * (a).
+     *
      * @param a the first matrix, possible invertible matrix
      * @param b the second matrix, possible inverse matrix of the first matrix
      * @return true or false
@@ -290,6 +295,38 @@ public class Calculator {
             return true;
         }
         return false;
+    }
+
+    private double round(double d, int decimals) {
+        BigDecimal bigDecimal = new BigDecimal(d);
+        bigDecimal = bigDecimal.setScale(decimals, RoundingMode.HALF_EVEN);
+        return bigDecimal.doubleValue();
+    }
+
+    private int getDecimals(double first, double second) {
+        String f = Double.toString(first);
+        String s = Double.toString(second);
+        
+        int pointF = f.indexOf('.');
+        int pointS = s.indexOf('.');
+        
+        int decimalsF = f.length() - pointF - 1;
+        int decimalsS = s.length() - pointS - 1;
+        
+        return Math.max(decimalsF, decimalsS);
+    }
+    
+    private int getDecimalsForScalar(double first, double second) {
+        String f = Double.toString(first);
+        String s = Double.toString(second);
+        
+        int pointF = f.indexOf('.');
+        int pointS = s.indexOf('.');
+        
+        int decimalsF = f.length() - pointF - 1;
+        int decimalsS = s.length() - pointS - 1;
+        
+        return decimalsF + decimalsS;
     }
 
 }
