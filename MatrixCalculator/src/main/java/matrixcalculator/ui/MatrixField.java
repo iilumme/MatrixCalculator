@@ -94,7 +94,12 @@ public class MatrixField extends JPanel {
         return fields;
     }
 
-    public void setNumbers(int matrix) {
+    /**
+     * Sets zero matrix or identity matrix in the fields.
+     *
+     * @param matrix 0, if zero matrix. 1, if identity matrix.
+     */
+    public void setSpecificMatrix(int matrix) {
         if (matrix == 0) {
             int row = 0;
 
@@ -137,6 +142,25 @@ public class MatrixField extends JPanel {
 
         }
 
+    }
+
+    public void setNumbers(double[][] numbers) {
+        int row = 0;
+
+        for (int column = 0; column < this.columns; column++) {
+
+            this.fields[row][column].setText("" + numbers[row][column]);
+
+            if (column == this.columns - 1) {
+                row++;
+                column = -1;
+
+                if (row == this.columns) {
+                    break;
+                }
+            }
+
+        }
     }
 
     public void empty() {

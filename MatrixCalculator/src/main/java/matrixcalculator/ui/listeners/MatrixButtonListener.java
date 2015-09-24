@@ -19,10 +19,10 @@ public class MatrixButtonListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (this.button.getName()) {
             case "zero":
-                this.matrixPanel.getMatrixField().setNumbers(0);
+                this.matrixPanel.getMatrixField().setSpecificMatrix(0);
                 break;
             case "identity":
-                this.matrixPanel.getMatrixField().setNumbers(1);
+                this.matrixPanel.getMatrixField().setSpecificMatrix(1);
                 break;
             case "empty":
                 this.matrixPanel.getMatrixField().empty();

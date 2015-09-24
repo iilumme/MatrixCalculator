@@ -30,7 +30,7 @@ public class EnterButtonListener implements ActionListener {
         if (this.rowsAndColumnsPanel.getRows().getText().matches("[+]?[0-9]+") && this.rowsAndColumnsPanel.getColumns().getText().matches("[+]?[0-9]+")) {
             rows = Integer.parseInt(this.rowsAndColumnsPanel.getRows().getText());
             columns = Integer.parseInt(this.rowsAndColumnsPanel.getColumns().getText());
-            this.calculationPanel.emptyMessage();
+            this.calculationPanel.removeMessage();
         } else {
             this.calculationPanel.setMessage("Something wrong with cells");
         }

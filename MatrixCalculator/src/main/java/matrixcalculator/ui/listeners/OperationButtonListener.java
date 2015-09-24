@@ -35,9 +35,10 @@ public class OperationButtonListener implements ActionListener {
                 Matrix sum = null;
                 try {
                     sum = calculator.Matrixplus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.emptyMessage();
-                    calculationPanel.emptyResult();
-                    calculationPanel.setResult(new MatrixLabel(sum));
+                    calculationPanel.removeMessage();
+                    calculationPanel.removeResultMatrix();
+                    calculationPanel.setResultMatrix(new MatrixLabel(sum));
+                    calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
@@ -47,9 +48,10 @@ public class OperationButtonListener implements ActionListener {
                 Matrix difference = null;
                 try {
                     difference = calculator.Matrixminus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.emptyMessage();
-                    calculationPanel.emptyResult();
-                    calculationPanel.setResult(new MatrixLabel(difference));
+                    calculationPanel.removeMessage();
+                    calculationPanel.removeResultMatrix();
+                    calculationPanel.setResultMatrix(new MatrixLabel(difference));
+                    calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
@@ -59,9 +61,10 @@ public class OperationButtonListener implements ActionListener {
                 Matrix scalarproduct = null;
                 try {
                     scalarproduct = calculator.MatrixScalarMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMultiplier());
-                    calculationPanel.emptyMessage();
-                    calculationPanel.emptyResult();
-                    calculationPanel.setResult(new MatrixLabel(scalarproduct));
+                    calculationPanel.removeMessage();
+                    calculationPanel.removeResultMatrix();
+                    calculationPanel.setResultMatrix(new MatrixLabel(scalarproduct));
+                    calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
@@ -71,9 +74,10 @@ public class OperationButtonListener implements ActionListener {
                 Matrix multiplyproduct = null;
                 try {
                     multiplyproduct = calculator.MatrixMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.emptyMessage();
-                    calculationPanel.emptyResult();
-                    calculationPanel.setResult(new MatrixLabel(multiplyproduct));
+                    calculationPanel.removeMessage();
+                    calculationPanel.removeResultMatrix();
+                    calculationPanel.setResultMatrix(new MatrixLabel(multiplyproduct));
+                    calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
@@ -83,9 +87,10 @@ public class OperationButtonListener implements ActionListener {
                 Matrix transpose = null;
                 try {
                     transpose = calculator.MatrixTranspose(calculationPanel.getMatrix("first"));
-                    calculationPanel.emptyMessage();
-                    calculationPanel.emptyResult();
-                    calculationPanel.setResult(new MatrixLabel(transpose));
+                    calculationPanel.removeMessage();
+                    calculationPanel.removeResultMatrix();
+                    calculationPanel.setResultMatrix(new MatrixLabel(transpose));
+                    calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
@@ -94,16 +99,17 @@ public class OperationButtonListener implements ActionListener {
             case "inverse": {
                 try {
                     boolean inverse = calculator.isInverseMatrixOfX(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.emptyMessage();
-                    calculationPanel.emptyResult();
+                    calculationPanel.removeMessage();
+                    calculationPanel.removeResultMatrix();
                     calculationPanel.setMessage(inverse + "");
+                    calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
                     calculationPanel.setMessage("Something wrong with cells");
                 }
             }
             break;
             case "determinant":
-                calculationPanel.emptyResult();
+                calculationPanel.removeResultMatrix();
                 break;
         }
     }
