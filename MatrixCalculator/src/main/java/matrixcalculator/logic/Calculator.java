@@ -107,7 +107,7 @@ public class Calculator {
 
         for (int column = 0; column < a.getColumns(); column++) {
 
-            numbers[row][column] = round(a.getNumbers()[row][column] * multiplier, getDecimalsForScalar(a.getNumbers()[row][column], multiplier));
+            numbers[row][column] = round(a.getNumbers()[row][column] * multiplier, getDecimalsForMultiplying(a.getNumbers()[row][column], multiplier));
 
             if (column == a.getColumns() - 1) {
                 row++;
@@ -148,10 +148,20 @@ public class Calculator {
             int bRow = 0;
             int bColumn = 0;
 
-            while (aRow < a.getRows() && aColumn < a.getColumns()) {
-
-                numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
-
+            while (aRow < a.getRows() && aColumn < a.getColumns()) {                
+                
+                int decimals;
+                
+                if (numbers[aRow][bColumn] == 0) {
+                    decimals = getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]);
+                } else {
+                    decimals = Math.max(getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]), getDecimals(numbers[aRow][bColumn]));
+                }
+                    
+                numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];              
+                numbers[aRow][bColumn] = round(numbers[aRow][bColumn], decimals);
+                
+                
                 if (bColumn == b.getColumns() - 1 && aColumn == a.getColumns() - 1) {
                     aRow++;
                     aColumn = 0;
@@ -302,6 +312,15 @@ public class Calculator {
         bigDecimal = bigDecimal.setScale(decimals, RoundingMode.HALF_EVEN);
         return bigDecimal.doubleValue();
     }
+    
+    private int getDecimals(double first) {
+        String f = Double.toString(first);
+        
+        int pointF = f.indexOf('.');
+        int decimalsF = f.length() - pointF - 1;
+        
+        return decimalsF;
+    }
 
     private int getDecimals(double first, double second) {
         String f = Double.toString(first);
@@ -316,7 +335,7 @@ public class Calculator {
         return Math.max(decimalsF, decimalsS);
     }
     
-    private int getDecimalsForScalar(double first, double second) {
+    private int getDecimalsForMultiplying(double first, double second) {
         String f = Double.toString(first);
         String s = Double.toString(second);
         
