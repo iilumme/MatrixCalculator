@@ -1,5 +1,11 @@
 **MatrixCalculator -määrittelydokumentti**
 
-Käytän tässä työssä tietorakenteena luultavasti taulukkoa. Taulukkoon saa hyvin luvut järjestykseen, ja sieltä saa haettua nopeahkosti tietoa.
-Käyttäjä voi syöttää ohjelmalle erikokoisia matriiseja, joille tehdään valitut laskutoimitukset.
-Aikavaativuus ja tilavaativuus pyrkii olemaan O(n).
+Käytän matriisilaskimessa tietorakenteena double-taulukkoa, johon saa hyvin matriisimaisesti luvut paikoilleen. Taulukosta hakeminenkin sujuu nopeasti.
+
+Perusoperaatioiden(plus, miinus, kerto, skalaarikertominen) lisäksi toteutan ainakin determinantin ja käänteismatriisin laskemisen.
+
+Käyttäjä voi graaffisen käyttöliittymän kautta syöttää ohjelmalle erikokoisia matriiseja, joille tehdään valitut laskutoimitukset. Matriiseihin voi laittaa kokonaislukujen lisäksi desimaalilukuja. 
+
+Operaatioiden aikavaatimus pyrkii olemaan O(nm), missä n on rivien määrä ja m sarakkeiden määrä. Tilavaativuus on myös O(nm).
+
+Lähteet: TiRa-kurssi
