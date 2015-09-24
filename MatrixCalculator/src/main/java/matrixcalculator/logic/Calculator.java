@@ -307,12 +307,23 @@ public class Calculator {
         return false;
     }
 
+    /**
+     * Rounds the given double 
+     * @param d the double
+     * @param decimals the wanted amount of decimal digits
+     * @return rounded double
+     */
     private double round(double d, int decimals) {
         BigDecimal bigDecimal = new BigDecimal(d);
         bigDecimal = bigDecimal.setScale(decimals, RoundingMode.HALF_EVEN);
         return bigDecimal.doubleValue();
     }
     
+    /**
+     * Returns the number of decimals
+     * @param first the given double
+     * @return the number of decimals
+     */
     private int getDecimals(double first) {
         String f = Double.toString(first);
         
@@ -322,6 +333,12 @@ public class Calculator {
         return decimalsF;
     }
 
+    /**
+     * Returns the bigger number of decimals
+     * @param first the first double
+     * @param second the second double
+     * @return the bigger number of decimals
+     */
     private int getDecimals(double first, double second) {
         String f = Double.toString(first);
         String s = Double.toString(second);
@@ -335,6 +352,12 @@ public class Calculator {
         return Math.max(decimalsF, decimalsS);
     }
     
+    /**
+     * Returns the sum of decimals
+     * @param first the first double
+     * @param second the second double
+     * @return the sum of decimals
+     */
     private int getDecimalsForMultiplying(double first, double second) {
         String f = Double.toString(first);
         String s = Double.toString(second);
