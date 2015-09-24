@@ -22,7 +22,7 @@ Vaikeuksia ei ole hirveästi ollut, vain graaffisten osasten liikuttelu, sijoitt
 
 **Neljäs viikkoraportti:**
 
-Tällä viikolla tutustuin regexiin ja doubleihin, jotka aiheuttivat ei niin kivoja lukuja. Tein pyöristämismetodeja, joilla sain doubleista aiheutuvia vääriä vastauksia poistettua. Muokkasin myös syötteiden tarkastavia regular expressions, jotta ne ottavat huomioon miinusmerkin ja desimaalipisteen. Lisäsin käyttöliittymään uusia nappeja helpottamaan laskemista. Sekä loin tulokseksi saadun matriisin hyödyntämisen lisälaskuissa. Lisäksi siivosin koodia vähän.
+Tällä viikolla tutustuin regexiin ja doubleihin, jotka aiheuttivat ei niin kivoja lukuja. Tein pyöristämismetodeja, joilla sain doubleista aiheutuvia vääriä vastauksia poistettua. Muokkasin myös syötteiden tarkastavia regular expressions, jotta ne ottavat huomioon miinusmerkin ja desimaalipisteen. Lisäsin käyttöliittymään uusia nappeja helpottamaan laskemista. Sekä loin tulokseksi saadun matriisin hyödyntämisen lisälaskuissa. Lisäksi siivosin koodia vähän ja muokkasin määrittelydokumenttia hieman paremmaksi. 
 
 Seuraavalla viikolla teen determinantin, paljon koodin siivoamista ja käänteismatriisin laskemisen.
 
