@@ -24,7 +24,7 @@ public class OperationButtonListener implements ActionListener {
     }
 
     /**
-     * Calculates the wanted operations and gives the result.
+     * Calculates the wanted operations and gives the result. TODO: THIS IS GOING TO BE CLEANED
      * @param e 
      */
     @Override

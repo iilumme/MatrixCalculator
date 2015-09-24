@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import matrixcalculator.ui.CalculationPanel;
 
+/**
+ * Actionlistener for buttons which sets new matrices to the left or right.
+ */
 public class LeftRightButtonListener implements ActionListener {
 
     private final JButton button;

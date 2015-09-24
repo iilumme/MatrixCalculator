@@ -7,15 +7,15 @@ import matrixcalculator.ui.MatrixPanel;
 import matrixcalculator.ui.RowsAndColumnsPanel;
 
 /**
- * ActionListener for ENTER button. Changes the rows and the columns of matrix.
+ * ActionListener for Set button. Changes the rows and the columns of matrix.
  */
-public class EnterButtonListener implements ActionListener {
+public class SetButtonListener implements ActionListener {
 
     private final RowsAndColumnsPanel rowsAndColumnsPanel;
     private final MatrixPanel matrixPanel;
     private final CalculationPanel calculationPanel;
 
-    public EnterButtonListener(RowsAndColumnsPanel racp, MatrixPanel mp, CalculationPanel cp) {
+    public SetButtonListener(RowsAndColumnsPanel racp, MatrixPanel mp, CalculationPanel cp) {
         this.rowsAndColumnsPanel = racp;
         this.matrixPanel = mp;
         this.calculationPanel = cp;

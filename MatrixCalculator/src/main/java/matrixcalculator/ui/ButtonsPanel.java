@@ -18,6 +18,7 @@ public class ButtonsPanel extends JPanel {
     private final JButton transpose;
     private final JButton inverse;
     private final JButton determinant;
+    private final JButton inverseMatrix;
 
     private final Calculator calculator;
 
@@ -31,6 +32,7 @@ public class ButtonsPanel extends JPanel {
         transpose = new JButton("TRANSPOSE");
         inverse = new JButton("IS IT THE INVERSE MATRIX OF 'X'?");
         determinant = new JButton("DETERMINANT (coming soon)");
+        inverseMatrix = new JButton("INVERSE MATRIX (coming soon)");
         
         calculator = new Calculator();
 
@@ -41,6 +43,7 @@ public class ButtonsPanel extends JPanel {
         transpose.setName("transpose");
         inverse.setName("inverse");
         determinant.setName("determinant");
+        inverseMatrix.setName("inversematrix");
 
         plusOperation.addActionListener(new OperationButtonListener(plusOperation, calculationPanel));
         minusOperation.addActionListener(new OperationButtonListener(minusOperation, calculationPanel));
@@ -49,6 +52,7 @@ public class ButtonsPanel extends JPanel {
         transpose.addActionListener(new OperationButtonListener(transpose, calculationPanel));
         inverse.addActionListener(new OperationButtonListener(inverse, calculationPanel));
         determinant.addActionListener(new OperationButtonListener(determinant, calculationPanel));
+        inverseMatrix.addActionListener(new OperationButtonListener(inverseMatrix, calculationPanel));
 
         add(plusOperation);
         add(minusOperation);
@@ -57,6 +61,7 @@ public class ButtonsPanel extends JPanel {
         add(transpose);
         add(inverse);
         add(determinant);
+        add(inverseMatrix);
 
         setOpaque(false);
     }

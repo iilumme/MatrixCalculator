@@ -5,8 +5,7 @@ import java.math.RoundingMode;
 import matrixcalculator.matrix.*;
 
 /**
- * Calculator calculates different operations. At the moment, the maximum number
- * of matrices in a operation is 2.
+ * Calculator calculates different operations.
  */
 public class Calculator {
 
@@ -307,7 +306,7 @@ public class Calculator {
     }
 
     /**
-     * Rounds the given double
+     * Rounds the given double.
      *
      * @param d the double
      * @param decimals the wanted amount of decimal digits
@@ -320,7 +319,7 @@ public class Calculator {
     }
 
     /**
-     * Returns the number of decimals
+     * Returns the number of decimals of the given double.
      *
      * @param first the given double
      * @return the number of decimals
@@ -335,7 +334,7 @@ public class Calculator {
     }
 
     /**
-     * Returns the bigger number of decimals
+     * Returns the bigger number of decimals of the two given doubles.
      *
      * @param first the first double
      * @param second the second double
@@ -355,7 +354,7 @@ public class Calculator {
     }
 
     /**
-     * Returns the sum of decimals
+     * Returns the sum of decimals for multiplying.
      *
      * @param first the first double
      * @param second the second double

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * Panel in which is the matrix where user can insert the numbers.
+ * Panel in which is the matrix table where user can insert the numbers.
  */
 public class MatrixField extends JPanel {
 
@@ -144,6 +144,10 @@ public class MatrixField extends JPanel {
 
     }
 
+    /**
+     * Sets the given numbers in the JTextField components.
+     * @param numbers 
+     */
     public void setNumbers(double[][] numbers) {
         int row = 0;
 
@@ -163,6 +167,9 @@ public class MatrixField extends JPanel {
         }
     }
 
+    /**
+     * Empties the matrix table.
+     */
     public void empty() {
         int row = 0;
         for (int column = 0; column < this.columns; column++) {

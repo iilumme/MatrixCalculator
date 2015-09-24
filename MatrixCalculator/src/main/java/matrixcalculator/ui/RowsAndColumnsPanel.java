@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 /**
- * Panel for setting the count of rows and columns.
+ * Panel for setting the count of rows and columns and for some other useful buttons.
  */
 public class RowsAndColumnsPanel extends JPanel {
 
@@ -21,7 +21,7 @@ public class RowsAndColumnsPanel extends JPanel {
     private final JLabel columnLabel;
     private final JTextField columns;
 
-    private final JButton enter;
+    private final JButton set;
     private final JButton zeroMatrix;
     private final JButton identityMatrix;
     private final JButton empty;
@@ -43,7 +43,7 @@ public class RowsAndColumnsPanel extends JPanel {
         columnPanel.add(columns, BorderLayout.EAST);
         columnPanel.setBackground(Color.LIGHT_GRAY);
 
-        this.enter = new JButton("Set");
+        this.set = new JButton("Set");
         this.zeroMatrix = new JButton("Zero Matrix");
         this.identityMatrix = new JButton("Identity Matrix");
         this.empty = new JButton("Empty");
@@ -55,7 +55,7 @@ public class RowsAndColumnsPanel extends JPanel {
         
         add(rowPanel);
         add(columnPanel);
-        add(enter);
+        add(set);
         add(zeroMatrix);
         add(identityMatrix);
         add(empty);
@@ -71,8 +71,8 @@ public class RowsAndColumnsPanel extends JPanel {
         return columns;
     }
 
-    public JButton getEnter() {
-        return enter;
+    public JButton getSetButton() {
+        return set;
     }
 
     public JButton getZeroMatrixButton() {

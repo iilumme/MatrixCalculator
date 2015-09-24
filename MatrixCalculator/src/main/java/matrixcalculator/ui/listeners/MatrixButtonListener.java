@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import matrixcalculator.ui.MatrixPanel;
 
+/**
+ * ActionListener for three buttons which creates zero or identity matrices or empties the matrices.
+ */
 public class MatrixButtonListener implements ActionListener {
 
     private final JButton button;

@@ -10,7 +10,7 @@ import matrixcalculator.matrix.Matrix;
 import matrixcalculator.ui.listeners.LeftRightButtonListener;
 
 /**
- * Panel in which are the matrices and the settings.
+ * Panel in which are the matrices, the settings and the results.
  */
 public class CalculationPanel extends JPanel {
 
@@ -112,7 +112,6 @@ public class CalculationPanel extends JPanel {
 
     /**
      * Returns the multiplier.
-     *
      * @return the multiplier.
      */
     public double getMultiplier() {
