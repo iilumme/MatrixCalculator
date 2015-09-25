@@ -24,6 +24,6 @@ Vaikeuksia ei ole hirveästi ollut, vain graaffisten osasten liikuttelu, sijoitt
 
 Tällä viikolla tutustuin regexiin ja doubleihin, jotka aiheuttivat ei niin kivoja lukuja. Tein pyöristämismetodeja, joilla sain doubleista aiheutuvia vääriä vastauksia poistettua. Muokkasin myös syötteiden tarkastavia regular expressions, jotta ne ottavat huomioon miinusmerkin ja desimaalipisteen. Lisäsin käyttöliittymään uusia nappeja helpottamaan laskemista. Sekä loin tulokseksi saadun matriisin hyödyntämisen lisälaskuissa. Lisäksi siivosin koodia vähän ja muokkasin määrittelydokumenttia, jota en ollut osannut kirjottaa, hieman paremmaksi. 
 
-Seuraavalla viikolla teen determinantin, paljon koodin siivoamista ja käänteismatriisin laskemisen.
+Seuraavalla viikolla teen determinantin, paljon koodin siivoamista ja käänteismatriisin laskemisen. Voisin tehdä myös matriisien alkeisrivitoimitus mahdollisuuksia.
 
 Opin uutta regular expressioneista sekä myös doublesta, mikä oli mielestäni hyvin tärkeä oppiminen. :)
