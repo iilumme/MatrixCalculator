@@ -178,5 +178,10 @@ public class CalculationPanel extends JPanel {
         this.left.setVisible(true);
         this.right.setVisible(true);
     }
+    
+    public void setNotVisibleLeftRight() {
+        this.left.setVisible(false);
+        this.right.setVisible(false);
+    }
 
 }

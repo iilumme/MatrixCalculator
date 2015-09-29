@@ -148,7 +148,7 @@ public class CalculatorTest {
 
         Matrix c = calculator.Matrixminus(a, b);
 
-        assertEquals(-0.7999999999999989, c.getNumbers()[0][0], DELTA);
+        assertEquals(-0.8, c.getNumbers()[0][0], DELTA);
         assertEquals(-2, c.getNumbers()[0][1], DELTA);
         assertEquals(5.9, c.getNumbers()[1][0], DELTA);
         assertEquals(-3.6, c.getNumbers()[1][1], DELTA);

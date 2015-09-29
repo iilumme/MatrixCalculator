@@ -24,75 +24,62 @@ public class OperationButtonListener implements ActionListener {
     }
 
     /**
-     * Calculates the wanted operations and gives the result. TODO: THIS IS GOING TO BE CLEANED
-     * @param e 
+     * Calculates the wanted operations and gives the result.
+     *
+     * @param e
      */
     @Override
     public void actionPerformed(ActionEvent e) {
 
         switch (operationButton.getName()) {
             case "plus":
-                Matrix sum = null;
                 try {
-                    sum = calculator.Matrixplus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.removeMessage();
-                    calculationPanel.removeResultMatrix();
-                    calculationPanel.setResultMatrix(new MatrixLabel(sum));
-                    calculationPanel.setVisibleLeftRight();
+                    Matrix sum = calculator.Matrixplus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
+                    resultMatrixAndMessageSettings(sum);
                 } catch (Exception ex) {
-                    calculationPanel.setMessage("Something wrong with cells");
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
                 }
 
                 break;
             case "minus":
-                Matrix difference = null;
                 try {
-                    difference = calculator.Matrixminus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.removeMessage();
-                    calculationPanel.removeResultMatrix();
-                    calculationPanel.setResultMatrix(new MatrixLabel(difference));
-                    calculationPanel.setVisibleLeftRight();
+                    Matrix difference = calculator.Matrixminus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
+                    resultMatrixAndMessageSettings(difference);
                 } catch (Exception ex) {
-                    calculationPanel.setMessage("Something wrong with cells");
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
                 }
 
                 break;
             case "scalar":
-                Matrix scalarproduct = null;
                 try {
-                    scalarproduct = calculator.MatrixScalarMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMultiplier());
+                    Matrix scalarproduct = calculator.MatrixScalarMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMultiplier());
                     calculationPanel.removeMessage();
-                    calculationPanel.removeResultMatrix();
-                    calculationPanel.setResultMatrix(new MatrixLabel(scalarproduct));
-                    calculationPanel.setVisibleLeftRight();
+                    resultMatrixAndMessageSettings(scalarproduct);
                 } catch (Exception ex) {
-                    calculationPanel.setMessage("Something wrong with cells");
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
                 }
 
                 break;
             case "multiply":
-                Matrix multiplyproduct = null;
                 try {
-                    multiplyproduct = calculator.MatrixMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    calculationPanel.removeMessage();
-                    calculationPanel.removeResultMatrix();
-                    calculationPanel.setResultMatrix(new MatrixLabel(multiplyproduct));
-                    calculationPanel.setVisibleLeftRight();
+                    Matrix multiplyproduct = calculator.MatrixMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
+                    resultMatrixAndMessageSettings(multiplyproduct);
                 } catch (Exception ex) {
-                    calculationPanel.setMessage("Something wrong with cells");
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
                 }
 
                 break;
             case "transpose":
-                Matrix transpose = null;
                 try {
-                    transpose = calculator.MatrixTranspose(calculationPanel.getMatrix("first"));
-                    calculationPanel.removeMessage();
-                    calculationPanel.removeResultMatrix();
-                    calculationPanel.setResultMatrix(new MatrixLabel(transpose));
-                    calculationPanel.setVisibleLeftRight();
+                    Matrix transpose = calculator.MatrixTranspose(calculationPanel.getMatrix("first"));
+                    resultMatrixAndMessageSettings(transpose);
                 } catch (Exception ex) {
-                    calculationPanel.setMessage("Something wrong with cells");
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
                 }
 
                 break;
@@ -104,14 +91,40 @@ public class OperationButtonListener implements ActionListener {
                     calculationPanel.setMessage(inverse + "");
                     calculationPanel.setVisibleLeftRight();
                 } catch (Exception ex) {
-                    calculationPanel.setMessage("Something wrong with cells");
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
                 }
             }
             break;
-            case "determinant":
+            case "determinant": {
+                try {
+                    double det = calculator.getDeterminant(calculationPanel.getMatrix("first"));
+                    resultMatrixAndMessageSettings(det);
+                } catch (Exception ex) {
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
+                }
+            }
+
+            break;
+            case "inversematrix":
                 calculationPanel.removeResultMatrix();
                 break;
         }
+    }
+
+    private void resultMatrixAndMessageSettings(Matrix matrix) {
+        calculationPanel.removeMessage();
+        calculationPanel.removeResultMatrix();
+        calculationPanel.setResultMatrix(new MatrixLabel(matrix));
+        calculationPanel.setVisibleLeftRight();
+    }
+
+    private void resultMatrixAndMessageSettings(double d) {
+        calculationPanel.removeMessage();
+        calculationPanel.removeResultMatrix();
+        calculationPanel.setResultMatrix(new MatrixLabel(d));
+        calculationPanel.setVisibleLeftRight();
     }
 
 }

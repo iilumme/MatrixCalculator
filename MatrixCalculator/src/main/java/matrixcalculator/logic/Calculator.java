@@ -9,17 +9,25 @@ import matrixcalculator.matrix.*;
  */
 public class Calculator {
 
+    private final DeterminantCalculator determinantCalculator;
+
+    public Calculator() {
+        this.determinantCalculator = new DeterminantCalculator();
+    }
+
     /**
      * Adds two matrices.
      *
      * @param a the first matrix
      * @param b the second matrix
      * @return the result matrix of the operation
+     * @throws java.lang.Exception if the number of rows and columns do not
+     * match
      */
-    public Matrix Matrixplus(Matrix a, Matrix b) {
+    public Matrix Matrixplus(Matrix a, Matrix b) throws Exception {
 
         if (a.getRows() != b.getRows() || a.getColumns() != b.getColumns()) {
-            return null;
+            throw new Exception("The number of rows and columns do not match.");
         } else {
 
             Matrix sum = new Matrix(a.getRows(), a.getColumns());
@@ -55,11 +63,13 @@ public class Calculator {
      * @param a the first matrix
      * @param b the second matrix
      * @return the result matrix of the operation
+     * @throws java.lang.Exception if the number of rows and columns do not
+     * match
      */
-    public Matrix Matrixminus(Matrix a, Matrix b) {
+    public Matrix Matrixminus(Matrix a, Matrix b) throws Exception {
 
         if (a.getRows() != b.getRows() || a.getColumns() != b.getColumns()) {
-            return null;
+            throw new Exception("The number of rows and columns do not match.");
         } else {
 
             Matrix difference = new Matrix(a.getRows(), a.getColumns());
@@ -130,11 +140,13 @@ public class Calculator {
      * @param a the multiplier matrix
      * @param b the multiplicand matrix
      * @return the result matrix of the operation
+     * @throws java.lang.Exception the number of columns of the first matrix and
+     * the number of rows of the second matrix should match
      */
-    public Matrix MatrixMultiply(Matrix a, Matrix b) {
+    public Matrix MatrixMultiply(Matrix a, Matrix b) throws Exception {
 
         if (a.getColumns() != b.getRows()) {
-            return null;
+            throw new Exception("The number of columns of the first matrix and the number of rows of the second matrix should match.");
         } else {
 
             Matrix multiplied = new Matrix(a.getRows(), b.getColumns());
@@ -294,8 +306,10 @@ public class Calculator {
      * @param a the first matrix, possible invertible matrix
      * @param b the second matrix, possible inverse matrix of the first matrix
      * @return true or false
+     * @throws java.lang.Exception the number of columns of the first matrix and
+     * the number of rows of the second matrix should match
      */
-    public boolean isInverseMatrixOfX(Matrix a, Matrix b) {
+    public boolean isInverseMatrixOfX(Matrix a, Matrix b) throws Exception {
         Matrix ab = MatrixMultiply(a, b);
         Matrix ba = MatrixMultiply(b, a);
 
@@ -314,7 +328,9 @@ public class Calculator {
      */
     private double round(double d, int decimals) {
         BigDecimal bigDecimal = new BigDecimal(d);
+        System.out.println(bigDecimal);
         bigDecimal = bigDecimal.setScale(decimals, RoundingMode.HALF_EVEN);
+        System.out.println(bigDecimal);
         return bigDecimal.doubleValue();
     }
 
@@ -371,6 +387,47 @@ public class Calculator {
         int decimalsS = s.length() - pointS - 1;
 
         return decimalsF + decimalsS;
+    }
+
+    private int searchTheBiggestAmountOfDecimals(Matrix a) {
+
+        int decimals = 0;
+
+        int row = 0;
+
+        for (int column = 0; column < a.getColumns(); column++) {
+
+            if (getDecimals(a.getNumbers()[row][column]) > decimals) {
+                decimals = getDecimals(a.getNumbers()[row][column]);
+            }
+
+            if (column == a.getColumns() - 1) {
+                row++;
+                column = -1;
+
+                if (row == a.getRows()) {
+                    break;
+                }
+            }
+
+        }
+        return decimals;
+    }
+
+    /**
+     * Gets the determinant of the matrix.
+     *
+     * @param a the matrix
+     * @return the determinant
+     * @throws Exception matrix should be a square matrix
+     */
+    public double getDeterminant(Matrix a) throws Exception {
+        if (a.getRows() != a.getColumns()) {
+            throw new Exception("Matrix is not a square matrix");
+        }
+        System.out.println(searchTheBiggestAmountOfDecimals(a));
+        
+        return round(this.determinantCalculator.calculate(a), searchTheBiggestAmountOfDecimals(a));
     }
 
 }
