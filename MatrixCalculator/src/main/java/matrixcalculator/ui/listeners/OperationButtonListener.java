@@ -108,7 +108,13 @@ public class OperationButtonListener implements ActionListener {
 
             break;
             case "inversematrix":
-                calculationPanel.removeResultMatrix();
+                try {
+                    Matrix inverse = calculator.getInverseMatrix(calculationPanel.getMatrix("first"));
+                    resultMatrixAndMessageSettings(inverse);
+                } catch (Exception ex) {
+                    calculationPanel.setMessage(ex.getMessage());
+                    calculationPanel.setNotVisibleLeftRight();
+                }
                 break;
         }
     }

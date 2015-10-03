@@ -14,10 +14,14 @@ import matrixcalculator.matrix.Matrix;
 public class MatrixLabel extends JPanel {
 
     private double[][] numbers;
+    private int rows;
+    private int columns;
 
     public MatrixLabel(Matrix matrix) {
 
         this.numbers = new double[matrix.getRows()][matrix.getColumns()];
+        this.rows = matrix.getRows();
+        this.columns = matrix.getColumns();
 
         setLayout(new GridLayout(matrix.getRows(), matrix.getColumns()));
         int row = 0;
@@ -44,6 +48,8 @@ public class MatrixLabel extends JPanel {
     public MatrixLabel(double number) {
 
         this.numbers = new double[1][1];
+        this.rows = 1;
+        this.columns = 1;
 
         setLayout(new GridLayout(1, 1));
         int row = 0;
@@ -62,5 +68,15 @@ public class MatrixLabel extends JPanel {
     public double[][] getNumbers() {
         return numbers;
     }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getColumns() {
+        return columns;
+    }
+    
+    
 
 }

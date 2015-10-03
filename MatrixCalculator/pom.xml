@@ -35,18 +35,13 @@
                 <configuration>
                     <instrumentation>
                         <excludes>
-                            <exclude>matrixcalculator/Main.class</exclude>    
+                            <exclude>matrixcalculator/main/*.class</exclude>    
                             <exclude>matrixcalculator/ui/**/*.class</exclude>
                         </excludes>
                     </instrumentation>
                 </configuration>
                 <version>2.6</version>
-            </plugin>
-            <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>0.30</version>
-            </plugin>
+            </plugin>         
         </plugins>
     </build>
    

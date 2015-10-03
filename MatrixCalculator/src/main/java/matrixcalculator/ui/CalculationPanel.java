@@ -1,6 +1,7 @@
 package matrixcalculator.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -59,6 +60,8 @@ public class CalculationPanel extends JPanel {
         add(this.left, BorderLayout.PAGE_END);
         add(this.right, BorderLayout.PAGE_END);
 
+        this.message.setBackground(Color.white);
+        
         this.right.setVisible(false);
         this.left.setVisible(false);
         setOpaque(false);

@@ -2,6 +2,9 @@ package matrixcalculator.logic;
 
 import matrixcalculator.matrix.Matrix;
 
+/**
+ * Calculator for determinant.
+ */
 public class DeterminantCalculator {
 
     public double calculate(Matrix a) {

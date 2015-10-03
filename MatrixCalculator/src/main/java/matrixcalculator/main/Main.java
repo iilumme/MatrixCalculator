@@ -1,4 +1,4 @@
-package matrixcalculator;
+package matrixcalculator.main;
 
 import javax.swing.SwingUtilities;
 import matrixcalculator.ui.Interface;

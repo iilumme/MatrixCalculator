@@ -1,5 +1,7 @@
 package matrixcalculator.logic;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import matrixcalculator.matrix.IdentityMatrix;
 import matrixcalculator.matrix.Matrix;
 import matrixcalculator.matrix.ZeroMatrix;
@@ -19,7 +21,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void plusOperationWorks() {
+    public void plusOperationWorks() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 2);
 
@@ -48,7 +50,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void plusOperationWorksDoubleCheck() {
+    public void plusOperationWorksDoubleCheck() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 2);
 
@@ -81,23 +83,32 @@ public class CalculatorTest {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 3);
 
-        Matrix c = calculator.Matrixplus(a, b);
+        Matrix c = null;
+
+        try {
+            c = calculator.Matrixplus(a, b);
+        } catch (Exception ex) {
+        }
 
         assertNull(c);
     }
-    
+
     @Test
     public void plusOperationDoesNotWorkWhenDifferentKindOfMatricesSecondTest() {
         Matrix a = new Matrix(3, 4);
         Matrix b = new Matrix(2, 3);
 
-        Matrix c = calculator.Matrixplus(a, b);
+        Matrix c = null;
+        try {
+            c = calculator.Matrixplus(a, b);
+        } catch (Exception ex) {
+        }
 
         assertNull(c);
     }
 
     @Test
-    public void minusOperationWorks() {
+    public void minusOperationWorks() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 2);
 
@@ -126,7 +137,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void minusOperationWorksDoubleCheck() {
+    public void minusOperationWorksDoubleCheck() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 2);
 
@@ -159,17 +170,25 @@ public class CalculatorTest {
         Matrix a = new Matrix(3, 2);
         Matrix b = new Matrix(2, 2);
 
-        Matrix c = calculator.Matrixminus(a, b);
+        Matrix c = null;
+        try {
+            c = calculator.Matrixminus(a, b);
+        } catch (Exception ex) {
+        }
 
         assertNull(c);
     }
-    
+
     @Test
     public void minusOperationDoesNotWorkWhenDifferentKindOfMatricesSecondTest() {
         Matrix a = new Matrix(3, 7);
         Matrix b = new Matrix(2, 5);
 
-        Matrix c = calculator.Matrixminus(a, b);
+        Matrix c = null;
+        try {
+            c = calculator.Matrixminus(a, b);
+        } catch (Exception ex) {
+        }
 
         assertNull(c);
     }
@@ -223,7 +242,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void multiplyingWorks2x2And2x3() {
+    public void multiplyingWorks2x2And2x3() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 3);
 
@@ -260,13 +279,17 @@ public class CalculatorTest {
         Matrix a = new Matrix(5, 2);
         Matrix b = new Matrix(10, 8);
 
-        Matrix c = calculator.MatrixMultiply(a, b);
+        Matrix c = null;
+        try {
+            c = calculator.MatrixMultiply(a, b);
+        } catch (Exception ex) {
+        }
 
         assertNull(c);
     }
 
     @Test
-    public void multiplyingWorks2x3And3x3() {
+    public void multiplyingWorks2x3And3x3() throws Exception {
         Matrix a = new Matrix(2, 3);
         Matrix b = new Matrix(3, 3);
 
@@ -328,7 +351,7 @@ public class CalculatorTest {
         IdentityMatrix identityMatrix = new IdentityMatrix(3);
         assertTrue(calculator.isIdentityMatrix(identityMatrix));
     }
-    
+
     @Test
     public void isIdentityMatrixTrueTwo() {
         Matrix a = new Matrix(3, 3);
@@ -350,7 +373,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isInverseMatrixofXFalse() {
+    public void isInverseMatrixofXFalse() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 2);
 
@@ -375,7 +398,7 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isInverseMatrixofXTrue() {
+    public void isInverseMatrixofXTrue() throws Exception {
 
         Matrix c = new Matrix(3, 3);
         Matrix d = new Matrix(3, 3);
@@ -448,5 +471,41 @@ public class CalculatorTest {
         a.setNumbers(anumbers);
 
         assertTrue(calculator.isZeroMatrix(a));
+    }
+
+    @Test
+    public void calculateDeterminantWorks() throws Exception {
+        Matrix a = new Matrix(2, 2);
+
+        double[][] anumbers = new double[2][2];
+        anumbers[0][0] = 0;
+        anumbers[0][1] = 1;
+        anumbers[1][0] = 0;
+        anumbers[1][1] = 1;
+
+        a.setNumbers(anumbers);
+
+        assertEquals(0, calculator.getDeterminant(a), DELTA);
+    }
+
+    @Test
+    public void calculateDeterminantDoesNotWorks() throws Exception {
+        Matrix a = new Matrix(2, 1);
+
+        double[][] anumbers = new double[2][1];
+        anumbers[0][0] = 0;
+        anumbers[1][0] = 1;
+
+        a.setNumbers(anumbers);
+
+        boolean works = true;
+        try {
+            double det = calculator.getDeterminant(a);
+        } catch (Exception e) {
+            works = false;
+        }
+        
+        assertFalse(works);
+
     }
 }

@@ -1,7 +1,5 @@
 package matrixcalculator.logic;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import matrixcalculator.matrix.*;
 
 /**
@@ -10,9 +8,13 @@ import matrixcalculator.matrix.*;
 public class Calculator {
 
     private final DeterminantCalculator determinantCalculator;
+    private final InverseCalculator inverseCalculator;
+    private final Rounder rounder;
 
     public Calculator() {
         this.determinantCalculator = new DeterminantCalculator();
+        this.inverseCalculator = new InverseCalculator(this);
+        this.rounder = new Rounder();
     }
 
     /**
@@ -38,7 +40,7 @@ public class Calculator {
 
             for (int column = 0; column < a.getColumns(); column++) {
 
-                numbers[row][column] = round(a.getNumbers()[row][column] + b.getNumbers()[row][column], getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
+                numbers[row][column] = this.rounder.round(a.getNumbers()[row][column] + b.getNumbers()[row][column], this.rounder.getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
 
                 if (column == a.getColumns() - 1) {
                     row++;
@@ -80,7 +82,8 @@ public class Calculator {
 
             for (int column = 0; column < a.getColumns(); column++) {
 
-                numbers[row][column] = round(a.getNumbers()[row][column] - b.getNumbers()[row][column], getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
+                numbers[row][column] = this.rounder.round(a.getNumbers()[row][column] - b.getNumbers()[row][column], this.rounder.getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
+                //numbers[row][column] = round(a.getNumbers()[row][column] - b.getNumbers()[row][column], getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
 
                 if (column == a.getColumns() - 1) {
                     row++;
@@ -116,7 +119,7 @@ public class Calculator {
 
         for (int column = 0; column < a.getColumns(); column++) {
 
-            numbers[row][column] = round(a.getNumbers()[row][column] * multiplier, getDecimalsForMultiplying(a.getNumbers()[row][column], multiplier));
+            numbers[row][column] = this.rounder.round(a.getNumbers()[row][column] * multiplier, this.rounder.getDecimalsForMultiplying(a.getNumbers()[row][column], multiplier));
 
             if (column == a.getColumns() - 1) {
                 row++;
@@ -164,13 +167,13 @@ public class Calculator {
                 int decimals;
 
                 if (numbers[aRow][bColumn] == 0) {
-                    decimals = getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]);
+                    decimals = this.rounder.getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]);
                 } else {
-                    decimals = Math.max(getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]), getDecimals(numbers[aRow][bColumn]));
+                    decimals = Math.max(this.rounder.getDecimalsForMultiplying(a.getNumbers()[aRow][aColumn], b.getNumbers()[bRow][bColumn]), this.rounder.getDecimals(numbers[aRow][bColumn]));
                 }
 
                 numbers[aRow][bColumn] += a.getNumbers()[aRow][aColumn] * b.getNumbers()[bRow][bColumn];
-                numbers[aRow][bColumn] = round(numbers[aRow][bColumn], decimals);
+                numbers[aRow][bColumn] = this.rounder.round(numbers[aRow][bColumn], decimals);
 
                 if (bColumn == b.getColumns() - 1 && aColumn == a.getColumns() - 1) {
                     aRow++;
@@ -320,101 +323,6 @@ public class Calculator {
     }
 
     /**
-     * Rounds the given double.
-     *
-     * @param d the double
-     * @param decimals the wanted amount of decimal digits
-     * @return rounded double
-     */
-    private double round(double d, int decimals) {
-        BigDecimal bigDecimal = new BigDecimal(d);
-        System.out.println(bigDecimal);
-        bigDecimal = bigDecimal.setScale(decimals, RoundingMode.HALF_EVEN);
-        System.out.println(bigDecimal);
-        return bigDecimal.doubleValue();
-    }
-
-    /**
-     * Returns the number of decimals of the given double.
-     *
-     * @param first the given double
-     * @return the number of decimals
-     */
-    private int getDecimals(double first) {
-        String f = Double.toString(first);
-
-        int pointF = f.indexOf('.');
-        int decimalsF = f.length() - pointF - 1;
-
-        return decimalsF;
-    }
-
-    /**
-     * Returns the bigger number of decimals of the two given doubles.
-     *
-     * @param first the first double
-     * @param second the second double
-     * @return the bigger number of decimals
-     */
-    private int getDecimals(double first, double second) {
-        String f = Double.toString(first);
-        String s = Double.toString(second);
-
-        int pointF = f.indexOf('.');
-        int pointS = s.indexOf('.');
-
-        int decimalsF = f.length() - pointF - 1;
-        int decimalsS = s.length() - pointS - 1;
-
-        return Math.max(decimalsF, decimalsS);
-    }
-
-    /**
-     * Returns the sum of decimals for multiplying.
-     *
-     * @param first the first double
-     * @param second the second double
-     * @return the sum of decimals
-     */
-    private int getDecimalsForMultiplying(double first, double second) {
-        String f = Double.toString(first);
-        String s = Double.toString(second);
-
-        int pointF = f.indexOf('.');
-        int pointS = s.indexOf('.');
-
-        int decimalsF = f.length() - pointF - 1;
-        int decimalsS = s.length() - pointS - 1;
-
-        return decimalsF + decimalsS;
-    }
-
-    private int searchTheBiggestAmountOfDecimals(Matrix a) {
-
-        int decimals = 0;
-
-        int row = 0;
-
-        for (int column = 0; column < a.getColumns(); column++) {
-
-            if (getDecimals(a.getNumbers()[row][column]) > decimals) {
-                decimals = getDecimals(a.getNumbers()[row][column]);
-            }
-
-            if (column == a.getColumns() - 1) {
-                row++;
-                column = -1;
-
-                if (row == a.getRows()) {
-                    break;
-                }
-            }
-
-        }
-        return decimals;
-    }
-
-    /**
      * Gets the determinant of the matrix.
      *
      * @param a the matrix
@@ -425,9 +333,18 @@ public class Calculator {
         if (a.getRows() != a.getColumns()) {
             throw new Exception("Matrix is not a square matrix");
         }
-        System.out.println(searchTheBiggestAmountOfDecimals(a));
+
+        return this.rounder.round(this.determinantCalculator.calculate(a), this.rounder.searchTheBiggestAmountOfDecimals(a));
+    }
+
+    public Matrix getInverseMatrix(Matrix a) throws Exception {
+        if (a.getRows() != a.getColumns()) {
+            throw new Exception("Matrix is not a square matrix");
+        } else if (getDeterminant(a) == 0) {
+            throw new Exception("There isn't a inverse matrix for this matrix.");
+        }
         
-        return round(this.determinantCalculator.calculate(a), searchTheBiggestAmountOfDecimals(a));
+        return this.inverseCalculator.calculate(a);
     }
 
 }
