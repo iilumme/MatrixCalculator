@@ -1,6 +1,5 @@
 package matrixcalculator.logic;
 
-import java.security.Identity;
 import matrixcalculator.matrix.IdentityMatrix;
 import matrixcalculator.matrix.Matrix;
 
@@ -129,6 +128,8 @@ public class InverseCalculator {
             
             
         }
+        
+        return null;
     }
 
     private double[][] setUpperNumbers(int rows, int columns) {
