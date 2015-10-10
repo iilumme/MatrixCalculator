@@ -39,50 +39,55 @@ public class InverseCalculator {
             Matrix U = lud.getUpperTriangularMatrix();
             IdentityMatrix I = new IdentityMatrix(rows);
             Matrix inverse = new Matrix(rows, columns);
-            
-            for (double[] col : L.getNumbers()) {
-                for (double d : col) {
-                    System.out.println(d);
-                }
-            }
-            System.out.println("****");
 
-
-            int row = 0;
-            int column = 0;
-            
             double[] y = new double[rows];
             double[] x = new double[rows];
             double[][] inverseNumbers = new double[rows][columns];
-            
-            for (int i = 0; i < rows; i++) {               
-                double[] f = I.getRow(i);
 
+            for (int i = 0; i < columns; i++) {
+                double[] identityMatrixColumn = I.getColumn(i);
+
+                //L*y=IdentityMatrixColumn
                 for (int j = 0; j < rows; j++) {
-                    
+
                     double minus = 0;
-                    
+
                     for (int k = 0; k < columns; k++) {
                         if (j == k) {
                             continue;
                         }
                         minus += L.getNumbers()[j][k] * y[k];
                     }
-                    
-                    y[j] = f[j] - minus;
-                } 
-                
-                for (double g : y) {
-                    System.out.println(g);
+
+                    y[j] = identityMatrixColumn[j] - minus;
                 }
-                
+
+                //U*x=y
+                for (int l = rows - 1; l >= 0; l--) {
+
+                    double minus = 0;
+
+                    for (int k = 0; k < columns; k++) {
+                        if (l == k) {
+                            continue;
+                        }
+
+                        if (U.getNumbers()[l][k] == 0) {
+                            continue;
+                        }
+
+                        minus += U.getNumbers()[l][k] * x[k];
+                    }
+                    x[l] = (y[l] - minus) / U.getNumbers()[l][l];
+                    inverseNumbers[l][i] = x[l];
+                }
+
             }
 
-            
-            
+            inverse.setNumbers(inverseNumbers);
+            return inverse;
         }
 
-        return null;
     }
 
 }

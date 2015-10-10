@@ -33,7 +33,7 @@ public class IdentityMatrix extends Matrix {
         }
     }
 
-    public double[] getRow(int position) {
+    public double[] getColumn(int position) {
         double[] row = new double[super.getRows()];
 
         for (int i = 0; i < super.getRows(); i++) {
