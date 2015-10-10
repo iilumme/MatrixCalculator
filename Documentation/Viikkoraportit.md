@@ -27,3 +27,8 @@ Tällä viikolla tutustuin regexiin ja doubleihin, jotka aiheuttivat ei niin kiv
 Seuraavalla viikolla teen determinantin, paljon koodin siivoamista ja käänteismatriisin laskemisen. Voisin tehdä myös matriisien alkeisrivitoimitus mahdollisuuksia.
 
 Opin uutta regular expressioneista sekä myös doublesta, mikä oli mielestäni hyvin tärkeä oppiminen. :)
+
+
+**Viides ja kuudes viikkoraportti:**
+
+Muutin kotoa viikolla viisi, minkä takia aikataulutus on jäljessä.
