@@ -30,7 +30,7 @@ public class ButtonsPanel extends JPanel {
         scalarOperation = new JButton("SCALAR MULTIPLICATION");
         multiplyOperation = new JButton("MULTIPLICATION");
         transpose = new JButton("TRANSPOSE");
-        inverse = new JButton("IS IT THE INVERSE MATRIX OF 'X'?");
+        inverse = new JButton("IS SECOND THE INVERSE MATRIX OF FIRST?");
         determinant = new JButton("DETERMINANT");
         inverseMatrix = new JButton("INVERSE MATRIX");
         

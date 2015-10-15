@@ -15,6 +15,8 @@ import matrixcalculator.ui.listeners.LeftRightButtonListener;
  */
 public class CalculationPanel extends JPanel {
 
+    private final Background background;
+
     private final JPanel multiplierPanel;
     private final JLabel multiplierLabel;
     private final JTextField multiplier;
@@ -28,7 +30,8 @@ public class CalculationPanel extends JPanel {
     private final JButton right;
     private final JButton left;
 
-    public CalculationPanel() {
+    public CalculationPanel(Background background) {
+        this.background = background;
 
         this.multiplierPanel = new JPanel(new GridLayout(2, 1));
         this.multiplierLabel = new JLabel("Multiplier");
@@ -61,7 +64,7 @@ public class CalculationPanel extends JPanel {
         add(this.right, BorderLayout.PAGE_END);
 
         this.message.setBackground(Color.white);
-        
+
         this.right.setVisible(false);
         this.left.setVisible(false);
         setOpaque(false);
@@ -115,6 +118,7 @@ public class CalculationPanel extends JPanel {
 
     /**
      * Returns the multiplier.
+     *
      * @return the multiplier.
      */
     public double getMultiplier() {
@@ -138,6 +142,7 @@ public class CalculationPanel extends JPanel {
         this.matrixLabel = matrixLabel;
         add(matrixLabel, BorderLayout.LINE_END);
         revalidate();
+        background.repaint();
     }
 
     /**
@@ -147,6 +152,7 @@ public class CalculationPanel extends JPanel {
         if (this.matrixLabel != null) {
             remove(this.matrixLabel);
             revalidate();
+            background.repaint();
         }
     }
 
@@ -159,6 +165,7 @@ public class CalculationPanel extends JPanel {
         this.message.setVisible(true);
         this.message.setText(message);
         revalidate();
+        background.repaint();
     }
 
     /**
@@ -167,6 +174,7 @@ public class CalculationPanel extends JPanel {
     public void removeMessage() {
         this.message.setVisible(false);
         revalidate();
+        background.repaint();
     }
 
     public MatrixPanel getFirstMatrixPanel() {
@@ -176,12 +184,12 @@ public class CalculationPanel extends JPanel {
     public MatrixPanel getSecondMatrixPanel() {
         return second;
     }
-    
+
     public void setVisibleLeftRight() {
         this.left.setVisible(true);
         this.right.setVisible(true);
     }
-    
+
     public void setNotVisibleLeftRight() {
         this.left.setVisible(false);
         this.right.setVisible(false);

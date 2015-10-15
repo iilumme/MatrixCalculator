@@ -6,8 +6,6 @@ import static org.junit.Assert.*;
 
 /**
  * Tests the DeterminantCalculator class.
- *
- * @author iina
  */
 public class DeterminantCalculatorTest {
 

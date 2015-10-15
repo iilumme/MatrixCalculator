@@ -83,7 +83,6 @@ public class Calculator {
             for (int column = 0; column < a.getColumns(); column++) {
 
                 numbers[row][column] = this.rounder.round(a.getNumbers()[row][column] - b.getNumbers()[row][column], this.rounder.getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
-                //numbers[row][column] = round(a.getNumbers()[row][column] - b.getNumbers()[row][column], getDecimals(a.getNumbers()[row][column], b.getNumbers()[row][column]));
 
                 if (column == a.getColumns() - 1) {
                     row++;
@@ -237,44 +236,12 @@ public class Calculator {
     }
 
     /**
-     * Tells if the given matrix is a zero matrix or not.
-     *
-     * @param a the matrix
-     * @return true or false
-     */
-    public boolean isZeroMatrix(Matrix a) {
-
-        if (a instanceof ZeroMatrix) {
-            return true;
-        }
-
-        int row = 0;
-
-        for (int column = 0; column < a.getColumns(); column++) {
-
-            if (a.getNumbers()[row][column] != 0) {
-                return false;
-            }
-
-            if (column == a.getColumns() - 1) {
-                row++;
-                column = -1;
-
-                if (row == a.getColumns()) {
-                    break;
-                }
-            }
-        }
-        return true;
-    }
-
-    /**
      * Tells if the given matrix is a identity matrix or not.
      *
      * @param a the matrix
      * @return true or false
      */
-    public boolean isIdentityMatrix(Matrix a) {
+    boolean isIdentityMatrix(Matrix a) {
 
         if (a instanceof IdentityMatrix) {
             return true;
@@ -303,7 +270,7 @@ public class Calculator {
     }
 
     /**
-     * Tells if the second matrix (b) is the inverse matrix of the fist matrix
+     * Tells if the second matrix (b) is the inverse matrix of the first matrix
      * (a).
      *
      * @param a the first matrix, possible invertible matrix
@@ -337,13 +304,20 @@ public class Calculator {
         return this.rounder.round(this.determinantCalculator.calculate(a), this.rounder.searchTheBiggestAmountOfDecimals(a));
     }
 
+    /**
+     * Gets the inverse matrix of the matrix.
+     *
+     * @param a the matrix
+     * @return the inverse matrix 
+     * @throws Exception matrix should be a square matrix, There isn't a inverse matrix for this matrix.
+     */
     public Matrix getInverseMatrix(Matrix a) throws Exception {
         if (a.getRows() != a.getColumns()) {
             throw new Exception("Matrix is not a square matrix");
         } else if (getDeterminant(a) == 0) {
             throw new Exception("There isn't a inverse matrix for this matrix.");
         }
-        
+
         return this.inverseCalculator.calculate(a);
     }
 

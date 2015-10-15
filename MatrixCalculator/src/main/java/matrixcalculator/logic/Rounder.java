@@ -6,7 +6,6 @@ import matrixcalculator.matrix.Matrix;
 
 /**
  * Class for rounding doubles.
- * @author iina
  */
 public class Rounder {
 

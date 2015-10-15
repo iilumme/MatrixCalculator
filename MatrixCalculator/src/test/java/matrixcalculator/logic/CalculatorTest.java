@@ -1,10 +1,7 @@
 package matrixcalculator.logic;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import matrixcalculator.matrix.IdentityMatrix;
 import matrixcalculator.matrix.Matrix;
-import matrixcalculator.matrix.ZeroMatrix;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -327,52 +324,6 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isIdentityMatrixFalse() {
-        Matrix a = new Matrix(2, 2);
-
-        double[][] anumbers = new double[2][2];
-        anumbers[0][0] = 3.2;
-        anumbers[0][1] = 2;
-        anumbers[1][0] = 4.1;
-        anumbers[1][1] = 1;
-
-        a.setNumbers(anumbers);
-        assertFalse(calculator.isIdentityMatrix(a));
-    }
-
-    @Test
-    public void isIdentityMatrixFalseWithZeroMatrix() {
-        ZeroMatrix zeroMatrix = new ZeroMatrix(3, 3);
-        assertFalse(calculator.isIdentityMatrix(zeroMatrix));
-    }
-
-    @Test
-    public void isIdentityMatrixTrue() {
-        IdentityMatrix identityMatrix = new IdentityMatrix(3);
-        assertTrue(calculator.isIdentityMatrix(identityMatrix));
-    }
-
-    @Test
-    public void isIdentityMatrixTrueTwo() {
-        Matrix a = new Matrix(3, 3);
-
-        double[][] anumbers = new double[3][3];
-        anumbers[0][0] = 1;
-        anumbers[0][1] = 0;
-        anumbers[0][2] = 0;
-        anumbers[1][0] = 0;
-        anumbers[1][1] = 1;
-        anumbers[1][2] = 0;
-        anumbers[2][0] = 0;
-        anumbers[2][1] = 0;
-        anumbers[2][2] = 1;
-
-        a.setNumbers(anumbers);
-
-        assertTrue(calculator.isIdentityMatrix(a));
-    }
-
-    @Test
     public void isInverseMatrixofXFalse() throws Exception {
         Matrix a = new Matrix(2, 2);
         Matrix b = new Matrix(2, 2);
@@ -433,47 +384,6 @@ public class CalculatorTest {
     }
 
     @Test
-    public void isZeroMatrixFalse() {
-        Matrix a = new Matrix(2, 2);
-
-        double[][] anumbers = new double[2][2];
-        anumbers[0][0] = 3.2;
-        anumbers[0][1] = 2;
-        anumbers[1][0] = 4.1;
-        anumbers[1][1] = 1;
-
-        a.setNumbers(anumbers);
-        assertFalse(calculator.isZeroMatrix(a));
-    }
-
-    @Test
-    public void isZeroMatrixFalseWithIdentityMatrix() {
-        IdentityMatrix identityMatrix = new IdentityMatrix(3);
-        assertFalse(calculator.isZeroMatrix(identityMatrix));
-    }
-
-    @Test
-    public void isZeroMatrixTrue() {
-        ZeroMatrix zeroMatrix = new ZeroMatrix(3, 2);
-        assertTrue(calculator.isZeroMatrix(zeroMatrix));
-    }
-
-    @Test
-    public void isZeroMatrixTrueTwo() {
-        Matrix a = new Matrix(2, 2);
-
-        double[][] anumbers = new double[2][2];
-        anumbers[0][0] = 0;
-        anumbers[0][1] = 0;
-        anumbers[1][0] = 0;
-        anumbers[1][1] = 0;
-
-        a.setNumbers(anumbers);
-
-        assertTrue(calculator.isZeroMatrix(a));
-    }
-
-    @Test
     public void calculateDeterminantWorks() throws Exception {
         Matrix a = new Matrix(2, 2);
 
@@ -504,8 +414,38 @@ public class CalculatorTest {
         } catch (Exception e) {
             works = false;
         }
-        
+
         assertFalse(works);
 
     }
+
+    @Test
+    public void getInverseWorksCorrectly() throws Exception {
+        try {
+            this.calculator.getInverseMatrix(new Matrix(2, 3));
+        } catch (Exception ex) {
+            assertTrue(true);
+        }
+
+        try {
+            Matrix a = new Matrix(2, 2);
+            double[][] numbers = {{1, 1}, {1, 1}};
+            a.setNumbers(numbers);
+            this.calculator.getInverseMatrix(a);
+        } catch (Exception ex) {
+            assertTrue(true);
+        }
+
+        Matrix a = new Matrix(2, 2);
+        double[][] numbers = {{1, 2}, {2, 1}};
+        a.setNumbers(numbers);
+
+        Matrix inverse = this.calculator.getInverseMatrix(a);
+
+        double[][] shoudBe = {{-0.3333333333333333, 0.6666666666666666}, {0.6666666666666666, -0.3333333333333333}};
+
+        Assert.assertArrayEquals(shoudBe, inverse.getNumbers());
+
+    }
+
 }

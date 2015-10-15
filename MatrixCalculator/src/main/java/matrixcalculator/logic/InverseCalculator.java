@@ -19,7 +19,12 @@ public class InverseCalculator {
         int rows = a.getRows();
         int columns = a.getColumns();
 
-        if (rows == 2) {
+        if (rows == 1) {
+            Matrix m = new Matrix(1, 1);
+            double[][] numbers = {{1 / (a.getNumbers()[0][0])}};
+            m.setNumbers(numbers);
+            return m;
+        } else if (rows == 2) {
             Matrix m = new Matrix(2, 2);
             double[][] numbers = new double[2][2];
 
@@ -47,7 +52,6 @@ public class InverseCalculator {
             for (int i = 0; i < columns; i++) {
                 double[] identityMatrixColumn = I.getColumn(i);
 
-                //L*y=IdentityMatrixColumn
                 for (int j = 0; j < rows; j++) {
 
                     double minus = 0;
@@ -62,7 +66,6 @@ public class InverseCalculator {
                     y[j] = identityMatrixColumn[j] - minus;
                 }
 
-                //U*x=y
                 for (int l = rows - 1; l >= 0; l--) {
 
                     double minus = 0;

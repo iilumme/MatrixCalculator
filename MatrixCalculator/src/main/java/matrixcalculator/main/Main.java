@@ -5,7 +5,6 @@ import matrixcalculator.ui.Interface;
 
 /**
  * Creates a new interface.
- * @author iina
  */
 public class Main {
 

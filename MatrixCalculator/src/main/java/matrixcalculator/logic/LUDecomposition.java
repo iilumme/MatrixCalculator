@@ -3,7 +3,7 @@ package matrixcalculator.logic;
 import matrixcalculator.matrix.Matrix;
 
 /**
- *
+ * Class which creates a lower triangular matrix and a upper triangular matrix from the given matrix.
  */
 public class LUDecomposition {
 
@@ -129,13 +129,6 @@ public class LUDecomposition {
             }
         }
 
-        for (double[] upperNumber : upperNumbers) {
-            for (double v : upperNumber) {
-                System.out.println(v);
-            }
-            System.out.println("^^^^");
-        }
-
         return upperNumbers;
     }
 
@@ -153,13 +146,6 @@ public class LUDecomposition {
                     lowerNumbers[i][j] = Double.MAX_VALUE;
                 }
             }
-        }
-
-        for (double[] lowerNumber : lowerNumbers) {
-            for (double m : lowerNumber) {
-                System.out.println(m);
-            }
-            System.out.println("^^^^");
         }
 
         return lowerNumbers;
