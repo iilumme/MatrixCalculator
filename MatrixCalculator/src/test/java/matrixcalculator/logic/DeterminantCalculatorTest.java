@@ -31,7 +31,7 @@ public class DeterminantCalculatorTest {
         assertEquals(5, this.determinantCalculator.calculate(a), DELTA);
 
     }
-    
+
     @Test
     public void Size2x2Matrix() {
         Matrix a = new Matrix(2, 2);
@@ -48,7 +48,7 @@ public class DeterminantCalculatorTest {
         assertEquals(3, this.determinantCalculator.calculate(a), DELTA);
 
     }
-    
+
     @Test
     public void Size3x3Matrix() {
         Matrix a = new Matrix(3, 3);
@@ -70,7 +70,7 @@ public class DeterminantCalculatorTest {
         assertEquals(-33, this.determinantCalculator.calculate(a), DELTA);
 
     }
-    
+
     @Test
     public void Size4x4Matrix() {
         Matrix a = new Matrix(4, 4);
@@ -81,17 +81,17 @@ public class DeterminantCalculatorTest {
         anumbers[0][1] = 5;
         anumbers[0][2] = 1;
         anumbers[0][3] = 1;
-        
+
         anumbers[1][0] = 8;
         anumbers[1][1] = 1;
         anumbers[1][2] = 2;
         anumbers[1][3] = 1;
-        
+
         anumbers[2][0] = 3;
         anumbers[2][1] = 4;
         anumbers[2][2] = 2;
         anumbers[2][3] = 2;
-        
+
         anumbers[3][0] = 1;
         anumbers[3][1] = 3;
         anumbers[3][2] = 1;
@@ -102,7 +102,7 @@ public class DeterminantCalculatorTest {
         assertEquals(-29, this.determinantCalculator.calculate(a), DELTA);
 
     }
-    
+
     @Test
     public void Size5x5Matrix() {
         Matrix a = new Matrix(5, 5);
@@ -114,35 +114,35 @@ public class DeterminantCalculatorTest {
         anumbers[0][2] = 1;
         anumbers[0][3] = 1;
         anumbers[0][4] = 1;
-        
+
         anumbers[1][0] = 8;
         anumbers[1][1] = 1;
         anumbers[1][2] = 2;
         anumbers[1][3] = 1;
         anumbers[1][4] = 1;
-        
+
         anumbers[2][0] = 3;
         anumbers[2][1] = 4;
         anumbers[2][2] = 2;
         anumbers[2][3] = 2;
         anumbers[2][4] = 1;
-        
+
         anumbers[3][0] = 1;
         anumbers[3][1] = 3;
         anumbers[3][2] = 1;
         anumbers[3][3] = 2;
         anumbers[3][4] = 1;
-        
+
         anumbers[4][0] = 1;
         anumbers[4][1] = 3;
         anumbers[4][2] = 1;
         anumbers[4][3] = 2;
         anumbers[4][4] = 1;
 
-
         a.setNumbers(anumbers);
 
         assertEquals(0, this.determinantCalculator.calculate(a), DELTA);
 
     }
+
 }

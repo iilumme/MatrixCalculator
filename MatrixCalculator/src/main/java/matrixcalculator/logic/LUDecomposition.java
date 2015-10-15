@@ -8,8 +8,8 @@ import matrixcalculator.matrix.Matrix;
 public class LUDecomposition {
 
     private final Matrix a;
-    private Matrix lowerTriangularMatrix;
-    private Matrix upperTriangularMatrix;
+    private final Matrix lowerTriangularMatrix;
+    private final Matrix upperTriangularMatrix;
     private final int rows;
     private final int columns;
 
@@ -35,6 +35,7 @@ public class LUDecomposition {
         //rows
         for (int i = 0; i < rows; i++) {
             //columns
+
             for (int j = 0; j < columns; j++) {
                 double elements[] = new double[rows * 2];
                 int pos = 0;
@@ -127,6 +128,14 @@ public class LUDecomposition {
                 }
             }
         }
+
+        for (double[] upperNumber : upperNumbers) {
+            for (double v : upperNumber) {
+                System.out.println(v);
+            }
+            System.out.println("^^^^");
+        }
+
         return upperNumbers;
     }
 
@@ -145,6 +154,14 @@ public class LUDecomposition {
                 }
             }
         }
+
+        for (double[] lowerNumber : lowerNumbers) {
+            for (double m : lowerNumber) {
+                System.out.println(m);
+            }
+            System.out.println("^^^^");
+        }
+
         return lowerNumbers;
     }
 
