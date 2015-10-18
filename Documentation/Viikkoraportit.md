@@ -36,6 +36,6 @@ Muutin kotoa viikolla viisi, minkä takia aikataulutus on jäljessä.
 
 **Seitsemäs viikkoraportti:**
 
-Viikkojen 5, 6 ja 7 aikana toteutin determinantin ja käänteismatriisin sekä paljon pientä viilausta. Tällä viikolla opin 
+Viikkojen 5, 6 ja 7 aikana toteutin determinantin ja käänteismatriisin sekä paljon pientä viilausta ja muuta.
 Vaikeuksia on tuottanut eniten doublet, jotka muuttuvat mukavasti nollamadoiksi. :) 
 Seuraavaksi aion nauttia laskimestani ja lukea liniksen tenttiin. ^_^
