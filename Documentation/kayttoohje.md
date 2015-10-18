@@ -1,6 +1,10 @@
 **Käyttöohje**
 
-MatrixCalculator käynnistetään TODO.
+MatrixCalculator käynnistetään MatrixCalculator/MatrixCalculator/target kansiossa:
+
+```
+java -jar MatrixCalculator-1.0.jar
+```
 
 Ohjelma käynnistyy omaan ikkunaansa. Ikkunassa on kaksi matriisia, joihin täytetään halutut matriisit.
 Jos haluaa matriisin skalaarikertolaskun, transpoosin, determinantin tai käänteismatriisin, matriisi täytetään ensimmäiseen matriisiin.
