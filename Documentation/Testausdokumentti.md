@@ -1,5 +1,7 @@
-**Testausdokumentti**
+#Testausdokumentti
 
-MatrixCalculatoria on testattu JUnit-testeillä. 
-Testejä on tehty Calculator-, Matrix-, ZeroMatrix- ja IdentityMatrix-luokille.
-Syötteinä on annettu kokonaislukuja ja desimaalilukuja(näitä tullaan testaamaan vielä lisää).
+MatrixCalculatoria on testattu JUnit-testeillä, joita on tehty matriisi- ja logiikkaluokille.
+Syötteinä on annettu kokonaislukuja ja desimaalilukuja.
+Testit löytyvät test-kansion alta.
+
+Graaffisessa käyttöliittymässä ei voi laittaa vääränlaista syötettä ja näytetään virheilmoituksia, jos syöte on väärää tai matriisien koot eivät kohtaa oikein.
