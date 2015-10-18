@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="matrixcalculator.logic.InverseCalculatorTest" time="0.022" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="matrixcalculator.logic.InverseCalculatorTest" time="0.004" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/jre/lib"/>
@@ -15,7 +15,6 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
-    <property name="test" value="matrixcalculator.logic.InverseCalculatorTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="/Users/iina/CodeProjects/MatrixCalculator/MatrixCalculator"/>
     <property name="java.runtime.version" value="1.8.0_20-b26"/>
@@ -46,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=matrixcalculator.logic.InverseCalculatorTest -Dmaven.ext.class.path=/Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven-nblib/netbeans-eventspy.jar surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/Applications/tmcbeans.app/Contents/Resources/tmcbeans/java/maven-nblib/netbeans-eventspy.jar test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="user.language.format" value="fi"/>
@@ -65,7 +64,7 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="matrixcalculator.logic.InverseCalculatorTest" name="Matrix1x1Works" time="0.007"/>
-  <testcase classname="matrixcalculator.logic.InverseCalculatorTest" name="works" time="0.002"/>
-  <testcase classname="matrixcalculator.logic.InverseCalculatorTest" name="Matrix2x2Works" time="0.013"/>
+  <testcase classname="matrixcalculator.logic.InverseCalculatorTest" name="works" time="0"/>
+  <testcase classname="matrixcalculator.logic.InverseCalculatorTest" name="Matrix1x1Works" time="0"/>
+  <testcase classname="matrixcalculator.logic.InverseCalculatorTest" name="Matrix2x2Works" time="0.004"/>
 </testsuite>

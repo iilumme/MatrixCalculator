@@ -34,8 +34,11 @@ public class OperationButtonListener implements ActionListener {
         switch (operationButton.getName()) {
             case "plus":
                 try {
+                    long start_time = System.nanoTime();
                     Matrix sum = calculator.Matrixplus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    resultMatrixAndMessageSettings(sum);
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
+                    resultMatrixAndMessageSettings(sum, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -44,8 +47,11 @@ public class OperationButtonListener implements ActionListener {
                 break;
             case "minus":
                 try {
+                    long start_time = System.nanoTime();
                     Matrix difference = calculator.Matrixminus(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    resultMatrixAndMessageSettings(difference);
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
+                    resultMatrixAndMessageSettings(difference, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -54,9 +60,12 @@ public class OperationButtonListener implements ActionListener {
                 break;
             case "scalar":
                 try {
+                    long start_time = System.nanoTime();
                     Matrix scalarproduct = calculator.MatrixScalarMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMultiplier());
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
                     calculationPanel.removeMessage();
-                    resultMatrixAndMessageSettings(scalarproduct);
+                    resultMatrixAndMessageSettings(scalarproduct, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -65,8 +74,11 @@ public class OperationButtonListener implements ActionListener {
                 break;
             case "multiply":
                 try {
+                    long start_time = System.nanoTime();
                     Matrix multiplyproduct = calculator.MatrixMultiply(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
-                    resultMatrixAndMessageSettings(multiplyproduct);
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
+                    resultMatrixAndMessageSettings(multiplyproduct, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -75,8 +87,11 @@ public class OperationButtonListener implements ActionListener {
                 break;
             case "transpose":
                 try {
+                    long start_time = System.nanoTime();
                     Matrix transpose = calculator.MatrixTranspose(calculationPanel.getMatrix("first"));
-                    resultMatrixAndMessageSettings(transpose);
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
+                    resultMatrixAndMessageSettings(transpose, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -85,11 +100,15 @@ public class OperationButtonListener implements ActionListener {
                 break;
             case "inverse": {
                 try {
+                    long start_time = System.nanoTime();
                     boolean inverse = calculator.isInverseMatrixOfX(calculationPanel.getMatrix("first"), calculationPanel.getMatrix("second"));
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
                     calculationPanel.removeMessage();
                     calculationPanel.removeResultMatrix();
                     calculationPanel.setMessage(inverse + "");
                     calculationPanel.setVisibleLeftRight();
+                    calculationPanel.setTime(time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -98,8 +117,11 @@ public class OperationButtonListener implements ActionListener {
             break;
             case "determinant": {
                 try {
+                    long start_time = System.nanoTime();
                     double det = calculator.getDeterminant(calculationPanel.getMatrix("first"));
-                    resultMatrixAndMessageSettings(det);
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
+                    resultMatrixAndMessageSettings(det, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -109,8 +131,11 @@ public class OperationButtonListener implements ActionListener {
             break;
             case "inversematrix":
                 try {
+                    long start_time = System.nanoTime();
                     Matrix inverse = calculator.getInverseMatrix(calculationPanel.getMatrix("first"));
-                    resultMatrixAndMessageSettings(inverse);
+                    long end_time = System.nanoTime();
+                    double time = (end_time - start_time) / 1000000000.0;
+                    resultMatrixAndMessageSettings(inverse, time);
                 } catch (Exception ex) {
                     calculationPanel.setMessage(ex.getMessage());
                     calculationPanel.setNotVisibleLeftRight();
@@ -119,18 +144,20 @@ public class OperationButtonListener implements ActionListener {
         }
     }
 
-    private void resultMatrixAndMessageSettings(Matrix matrix) {
+    private void resultMatrixAndMessageSettings(Matrix matrix, double time) {
         calculationPanel.removeMessage();
         calculationPanel.removeResultMatrix();
         calculationPanel.setResultMatrix(new MatrixLabel(matrix));
         calculationPanel.setVisibleLeftRight();
+        calculationPanel.setTime(time);
     }
 
-    private void resultMatrixAndMessageSettings(double d) {
+    private void resultMatrixAndMessageSettings(double d, double time) {
         calculationPanel.removeMessage();
         calculationPanel.removeResultMatrix();
         calculationPanel.setResultMatrix(new MatrixLabel(d));
         calculationPanel.setVisibleLeftRight();
+        calculationPanel.setTime(time);
     }
 
 }

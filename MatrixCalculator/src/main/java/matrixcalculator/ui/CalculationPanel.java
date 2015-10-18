@@ -195,4 +195,8 @@ public class CalculationPanel extends JPanel {
         this.right.setVisible(false);
     }
 
+    public void setTime(double time) {
+        this.background.getTimePanel().setTime(time);
+    }
+
 }
