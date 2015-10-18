@@ -1,3 +1,5 @@
+#Viikkoraportit
+
 **Ensimmäinen viikkoraportti:**
 
 Päätin aiheen ja loin repositorion. Tutustuin matriiseihin.
@@ -28,7 +30,12 @@ Seuraavalla viikolla teen determinantin, paljon koodin siivoamista ja käänteis
 
 Opin uutta regular expressioneista sekä myös doublesta, mikä oli mielestäni hyvin tärkeä oppiminen. :)
 
-
 **Viides ja kuudes viikkoraportti:**
 
 Muutin kotoa viikolla viisi, minkä takia aikataulutus on jäljessä.
+
+**Seitsemäs viikkoraportti:**
+
+Viikkojen 5, 6 ja 7 aikana toteutin determinantin ja käänteismatriisin sekä paljon pientä viilausta. Tällä viikolla opin 
+Vaikeuksia on tuottanut eniten doublet, jotka muuttuvat mukavasti nollamadoiksi. :) 
+Seuraavaksi aion nauttia laskimestani ja lukea liniksen tenttiin. ^_^
