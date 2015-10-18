@@ -1,0 +1,5 @@
+matrixcalculator/matrix/MatrixTest.class
+matrixcalculator/logic/InverseCalculatorTest.class
+matrixcalculator/logic/LUDecompositionTest.class
+matrixcalculator/logic/CalculatorTest.class
+matrixcalculator/logic/DeterminantCalculatorTest.class
